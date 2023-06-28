@@ -1,6 +1,6 @@
 @extends('admin.layouts.app')
 @section('panel')
-<div class="row">
+{{-- <div class="row">
     <div class="col-lg-12">
         <div class="card b-radius--10 ">
             <div class="card-body p-0">
@@ -58,9 +58,78 @@
             </div>
         </div><!-- card end -->
     </div>
+</div> --}}
+
+<div class="main-panel">
+    <div class="content-wrapper">
+      <div class="row">
+
+        <div class="col-lg-12 grid-margin stretch-card">
+            <div class="card">
+              <div class="card-body">
+                <h4 class="card-title">{{__($pageTitle)}}</h4>
+               
+                <div class="table-responsive">
+                  <table class="table table-hover">
+                    <thead>
+                      <tr>
+                        <th>@lang('Name')</th>
+                        <th>@lang('Code')</th>
+                        <th>@lang('Default')</th>
+                        <th>@lang('Actions')</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        @forelse ($languages as $item)
+                            <tr>
+                                <td>{{__($item->name)}}</td>
+                                <td><strong>{{ __($item->code) }}</strong></td>
+                                <td>
+                                    @if($item->is_default == 1)
+                                    <span
+                                        class="text--small badge font-weight-normal badge-success">@lang('Default')</span>
+                                    @endif
+                                </td>
+                                <td>
+                                    <div class="button--group">
+                                        <a title="@lang('Translate')" href="{{route('admin.language.key', $item->id)}}"
+                                            class="btn btn-sm btn-success">
+                                            <i class="la la-language"></i>
+                                        </a>
+                                        <a title="@lang('Edit')" href="javascript:void(0)"
+                                            class="btn btn-sm btn-primary ms-1 editBtn"
+                                            data-url="{{ route('admin.language.manage.update', $item->id)}}"
+                                            data-lang="{{ json_encode($item->only('name', 'text_align', 'is_default')) }}">
+                                            <i class="la la-pen"></i>
+                                        </a>
+                                        @if($item->id != 1)
+                                        <button title="@lang('Edit')" class="btn btn-sm btn-danger confirmationBtn"
+                                            data-question="@lang('Are you sure to remove this language from this system?')"
+                                            data-action="{{ route('admin.language.manage.delete', $item->id) }}">
+                                            <i class="la la-trash"></i>
+                                        </button>
+                                        @endif
+                                    </div>
+                                </td>
+                            </tr>
+                            @empty
+                            <tr>
+                                <td class="text-muted text-center" colspan="100%">{{ __($emptyMessage) }}</td>
+                            </tr>
+                            @endforelse
+
+                     
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+            
+            </div>
+          </div>
+      </div>
+    </div>
 </div>
-
-
 
 {{-- NEW MODAL --}}
 <div class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-labelledby="createModalLabel"
@@ -93,16 +162,16 @@
                         <label>@lang('Default Language')</label>
                         <div class="col-sm-12">
                             <select name="is_default" id="setDefault" class="form-control">
-                                <option value="1">Default</option>
-                                <option value="0">Not Default</option>
+                                <option value="1">@lang('Default')</option>
+                                <option value="0">@lang('Not Default')</option>
                             </select>
                         </div>
                     </div>
 
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn--primary btn-global" id="btn-save"
-                        value="add">@lang('Save')</button>
+                    <button type="submit" class="btn btn-primary btn-global" id="btn-save"
+                        value="add">@lang('Submit')</button>
                 </div>
             </form>
         </div>
@@ -132,15 +201,15 @@
                         <label>@lang('Default Language')</label>
                         <div class="col-sm-12">
                             <select name="is_default" id="setDefault" class="form-control">
-                                <option value="1">Default</option>
-                                <option value="0">Not Default</option>
+                                <option value="1">@lang('Default')</option>
+                                <option value="0">@lang('Not Default')</option>
                             </select>
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn--primary btn-global" id="btn-save"
-                        value="add">@lang('Save')</button>
+                    <button type="submit" class="btn btn-primary btn-global" id="btn-save"
+                        value="add">@lang('Submit')</button>
                 </div>
             </form>
         </div>

@@ -1,6 +1,6 @@
 @extends('admin.layouts.app')
 @section('panel')
-<div class="row">
+{{-- <div class="row">
     <div class="col-lg-12">
         <div class="card b-radius--10 ">
             <div class="card-body p-0">
@@ -57,8 +57,76 @@
             @endif
         </div><!-- card end -->
     </div>
-</div>
+</div> --}}
 
+<div class="main-panel">
+    <div class="content-wrapper">
+      <div class="row">
+
+        <div class="col-lg-12 grid-margin stretch-card">
+            <div class="card">
+              <div class="card-body">
+                <h4 class="card-title">{{__($pageTitle)}}</h4>
+               
+                <div class="table-responsive">
+                  <table class="table table-hover">
+                    <thead>
+                      <tr>
+                        <th>@lang('User')</th>
+                        <th>@lang('Sent')</th>
+                        <th>@lang('Sender')</th>
+                        <th>@lang('Subject')</th>
+                        <th>@lang('Action')</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        @forelse($logs as $log)
+                        <tr>
+                            <td>
+                                @if($log->user)
+                                <a href="{{ route('admin.users.detail', $log->user_id) }}">{{ $log->user->fullname
+                                    }}</a>
+                                @else
+                                <span class="fw-bold">@lang('System')</span>
+                                @endif
+                            </td>
+                            <td>
+                                {{ showDateTime($log->created_at) }}
+                            </td>
+                            <td>
+                                <span class="fw-bold">{{ __($log->sender) }}</span>
+                            </td>
+                            <td>{{ __($log->subject) }}</td>
+                            <td>
+                                <button title="@lang('Details')" class="btn btn-sm btn-primary notifyDetail"
+                                    data-type="{{ $log->notification_type }}" @if($log->notification_type ==
+                                    'email') data-message="{{ route('admin.report.email.details',$log->id)}}" @else
+                                    data-message="{{ $log->message }}" @endif data-sent_to="{{ $log->sent_to }}"
+                                    target="_blank"><i class="las la-eye"></i></button>
+                            </td>
+                        </tr>
+                        @empty
+                        <tr>
+                            <td class="text-muted text-center" colspan="100%">{{ __($emptyMessage) }}</td>
+                        </tr>
+                        @endforelse
+
+                     
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              @if($logs->hasPages())
+            <div class="card-footer py-4">
+                {{ paginateLinks($logs) }}
+            </div>
+            @endif
+            </div>
+          </div>
+      </div>
+    </div>
+</div>
 
 <div class="modal fade" id="notifyDetailModal" tabindex="-1" aria-labelledby="notifyDetailModalLabel"
     aria-hidden="true">
