@@ -1,7 +1,7 @@
 @extends('admin.layouts.app')
 
 @section('panel')
-@include('admin.components.tabs.deposit')
+{{-- @include('admin.components.tabs.deposit') --}}
 <div class="row justify-content-center gy-4">
     @if(request()->routeIs('admin.deposit.list') || request()->routeIs('admin.deposit.method') ||
     request()->routeIs('admin.users.deposits') || request()->routeIs('admin.users.deposits.method'))
