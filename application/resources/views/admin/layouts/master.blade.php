@@ -16,7 +16,7 @@
 
     <link rel="stylesheet" href="{{asset('assets/admin/css/auth.css')}}">
 
-    {{-- vendors css --}}
+    {{-- vendors css plugins--}}
     <link rel="stylesheet" href="{{asset('assets/vendors/feather/feather.css')}}">
     <link rel="stylesheet" href="{{asset('assets/vendors/mdi/css/materialdesignicons.min.css')}}">
     <link rel="stylesheet" href="{{asset('assets/vendors/ti-icons/css/themify-icons.css')}}">
@@ -25,9 +25,9 @@
     <link rel="stylesheet" href="{{asset('assets/vendors/css/vendor.bundle.base.css')}}">
 
     {{-- css --}}
-    <link rel="stylesheet" href="{{asset('assets/css/vertical-layout-light/style.css')}}">
+    {{-- <link rel="stylesheet" href="{{asset('assets/css/vertical-layout-light/style.css')}}"> --}}
     <!-- endinject -->
-    <link rel="shortcut icon" href="../../images/favicon.png" />
+    <link rel="shortcut icon" href="{{asset('assets/images/favicon.png')}}" />
     @stack('style-lib')
 
     <link rel="stylesheet" href="{{asset('assets/admin/css/select2.min.css')}}">
@@ -63,7 +63,7 @@
 
     @include('includes.notify')
     @stack('script-lib')
-
+    @stack('script')
 
     <script src="{{asset('assets/admin/js/select2.min.js')}}"></script>
     <script src="{{asset('assets/admin/js/admin.js')}}"></script>
@@ -80,7 +80,7 @@
         }
     </script>
 
-    @stack('script')
+
 
 
 </body>

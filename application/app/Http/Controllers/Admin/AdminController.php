@@ -63,6 +63,10 @@ class AdminController extends Controller
         $userLogins['labels'] = $userLoginsReport->keys();
         $userLogins['values'] = $userLoginsReport->values();
 
+
+    
+    
+
         // UserLogin Report Graph
         $newTickets = SupportTicket::with('user')->orderBy('created_at', 'desc')->whereStatus(0)->limit(5)->get();
         return view('admin.dashboard', compact('pageTitle', 'widget', 'withdrawalsChart', 'depositsChart', 'deposit', 'withdrawals', 'userLogins', 'newTickets'));
