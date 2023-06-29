@@ -1,6 +1,6 @@
 @extends('admin.layouts.app')
 @section('panel')
-<div class="row mb-none-30">
+{{-- <div class="row mb-none-30">
     <div class="col-lg-12 col-md-12 mb-30">
         <div class="card">
             <div class="card-body px-4">
@@ -140,6 +140,117 @@
                 </form>
             </div>
         </div>
+    </div>
+</div> --}}
+
+{{-- section --}}
+<div class="main-panel">        
+    <div class="content-wrapper">
+      <div class="row">
+        <div class="col-md-8 grid-margin stretch-card">
+          <div class="card">
+            <div class="card-body">
+              <h4 class="card-title">{{__($pageTitle)}}</h4>
+              <p class="card-description">
+                @lang('Basic configuration of your website')
+              </p>
+              <form class="forms-sample" method="POST" action="">
+                @csrf
+                
+                <div class="row">
+                    <div class="col-4">
+                        <div class="form-group">
+                            <label for="exampleInputUsername1">@lang('Site Title')</label>
+                            <input type="text" name="site_name" value="{{$general->site_name}}" class="form-control" id="exampleInputUsername1" placeholder="Username">
+                        </div>
+                    </div>
+
+                    <div class="col-4">
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">@lang('Site Color')</label>
+                            <input type="text" name="base_color" value="{{ $general->base_color }}" class="form-control" id="exampleInputPassword1" placeholder="currency text">
+                          </div>
+          
+                    </div>
+
+                    <div class="col-4">
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">@lang('Site Secondary Color')</label>
+                            <input type="text" name="secondary_color" value="{{ $general->secondary_color }}"  class="form-control" id="exampleInputPassword1" placeholder="currency text">
+                          </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-4">
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">@lang('Time Zone')</label>
+                            <select class="form-control" name="timezone">
+                              @foreach($timezones as $timezone)
+                              <option value="'{{ @$timezone }}'">{{ __($timezone) }}</option>
+                              @endforeach
+                              </select>
+                          </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">@lang('Currency Symbol')</label>
+                            <input type="text" name="cur_sym" value="{{$general->cur_sym}}" class="form-control" id="exampleInputEmail1" placeholder="Email">
+                          </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">@lang('Currency Text')</label>
+                            <input type="text" name="cur_text" value="{{__($general->cur_text)}}" class="form-control" id="exampleInputPassword1" placeholder="currency text">
+                          </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="">@lang('Email Verification')</label>
+                            <input type="checkbox" class="toggle-switch" name="ev" {{ $general->ev ?
+                                'checked' : null }}>
+                          </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="">@lang('Email Notification')</label>
+                            <input type="checkbox" class="toggle-switch" name="en" {{ $general->en ?
+                                'checked' : null }}>
+                          </div>
+                    </div>
+                    
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="">@lang('User Registration')</label>
+                            <input type="checkbox" class="toggle-switch" name="registration" {{
+                                $general->registration ?
+                            'checked' : null }}>
+                          </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="">@lang('Terms & Condition')</label>
+                            <input type="checkbox" class="toggle-switch" name="agree" {{ $general->agree ?
+                                'checked' : null }}>
+                          </div>
+                    </div>
+
+                    
+                </div>
+                
+                <button type="submit" class="btn btn-primary me-2">@lang('Submit')</button>
+                
+              </form>
+            </div>
+          </div>
+        </div>
+        
+      </div>
     </div>
 </div>
 @endsection

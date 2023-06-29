@@ -13,7 +13,7 @@ class GeneralSettingController extends Controller
 {
     public function index()
     {
-        $pageTitle = 'Global Settings';
+        $pageTitle = 'Configuration globally';
         $timezones = json_decode(file_get_contents(resource_path('views/admin/components/timezone.json')));
         return view('admin.setting.general', compact('pageTitle','timezones'));
     }

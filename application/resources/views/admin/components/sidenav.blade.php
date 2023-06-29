@@ -81,7 +81,7 @@
       <li class="nav-item">
         <a class="nav-link" href="{{route('admin.setting.index')}}">
           <i class="menu-icon mdi mdi-settings"></i>
-          <span class="menu-title">@lang('Global Configuration')</span>
+          <span class="menu-title">@lang('Configuration Globally')</span>
         </a>
       </li>
 
