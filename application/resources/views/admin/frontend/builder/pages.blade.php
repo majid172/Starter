@@ -252,7 +252,7 @@
                                 <td>@lang('Cookie Policy')</td>
                                 <td><a title="@lang('Edit')"
                                     href="{{route('admin.setting.cookie')}}"
-                                    class="btn btn-sm btn--primary"><i class="la la-pencil-alt"></i>
+                                    class="btn btn-sm btn-primary"><i class="la la-pencil-alt"></i>
                                 </a></td>
                             </tr>
                             @forelse($elements as $data)
@@ -362,7 +362,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn--primary btn-global">@lang('Save')</button>
+                    <button type="submit" class="btn btn--primary btn-global">@lang('Submit')</button>
                 </div>
             </form>
         </div>
