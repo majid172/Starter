@@ -1,7 +1,7 @@
 @extends('admin.layouts.app')
 @section('panel')
 @if(@$section->content)
-<div class="row">
+{{-- <div class="row">
     <div class="col-lg-12 col-md-12 mb-30">
         <div class="card">
             <div class="card-body">
@@ -125,25 +125,166 @@
             </div>
         </div>
     </div>
+</div> --}}
+
+<div class="main-panel">
+    <div class="content-wrapper">
+      <div class="row">
+
+        {{-- pages  --}}
+        <div class="col-lg-12 grid-margin stretch-card">
+            <div class="card">
+              <div class="card-body">
+                <h4 class="card-title">{{__($pageTitle)}}</h4>
+                <form action="{{ route('admin.frontend.sections.content', $key)}}" method="POST"
+                enctype="multipart/form-data">
+                @csrf
+                <input type="hidden" name="type" value="content">
+                <div class="row">
+                    @php
+                    $imgCount = 0;
+                    @endphp
+                    @foreach($section->content as $k => $item)
+                    @if($k == 'images')
+                    @php
+                    $imgCount = collect($item)->count();
+                    @endphp
+                    @foreach($item as $imgKey => $image)
+                    <div class="col-md-4">
+                        <input type="hidden" name="has_image" value="1">
+                        <div class="form-group">
+                            <label>{{__(keyToTitle(@$imgKey))}}</label>
+                            <div class="image-upload">
+                                <div class="thumb">
+                                    <div class="avatar-preview">
+                                        <div class="profilePicPreview"
+                                            style="background-image: url({{getImage('assets/images/frontend/' . $key .'/'. @$content->data_values->$imgKey,@$section->content->images->$imgKey->size) }})">
+                                            <button type="button" class="remove-image"><i
+                                                    class="fa fa-times"></i></button>
+                                        </div>
+                                    </div>
+                                    <div class="avatar-edit">
+                                        <input type="file" class="profilePicUpload"
+                                            name="image_input[{{ @$imgKey }}]"
+                                            id="profilePicUpload{{ $loop->index }}" accept=".png, .jpg, .jpeg">
+                                        <label for="profilePicUpload{{ $loop->index }}"
+                                            class="bg-primary">{{__(keyToTitle(@$imgKey))}}</label>
+                                        <small class="mt-2  ">
+                                            @if(@$section->content->images->$imgKey->size)
+                                            @lang('Recomended size:'):
+                                            <b>{{@$section->content->images->$imgKey->size}}</b>
+                                            @lang('px').
+                                            @endif
+                                        </small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @endforeach
+                    <div class="@if($imgCount > 1) col-md-12 @else col-md-8 @endif">
+                        @push('divend')
+                    </div>
+                    @endpush
+                    @else
+                    @if($k != 'images')
+                    @if($item == 'icon')
+                    <div class="col-md-12">
+                        <div class="form-group ">
+                            <label>{{__(keyToTitle($k))}}</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control iconPicker icon" autocomplete="off"
+                                    name="{{ $k }}" required>
+                                <span class="input-group-text  input-group-addon" data-icon="las la-home"
+                                    role="iconpicker"></span>
+                            </div>
+                        </div>
+                    </div>
+                    @elseif($item == 'textarea')
+
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>{{__(keyToTitle($k))}}</label>
+                            <textarea rows="10" class="form-control" name="{{$k}}"
+                                required>{{ @$content->data_values->$k}}</textarea>
+                        </div>
+                    </div>
+
+                    @elseif($item == 'textarea-rich')
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>{{__(keyToTitle($k))}}</label>
+                            <textarea rows="10" class="form-control trumEdit"
+                                name="{{$k}}">{{ @$content->data_values->$k}}</textarea>
+                        </div>
+                    </div>
+                    @elseif($k == 'select')
+                    @php
+                    $selectName = $item->name;
+                    @endphp
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>{{__(keyToTitle(@$selectName))}}</label>
+                            <select class="form-control" name="{{ @$selectName }}">
+                                @foreach($item->options as $selectItemKey => $selectOption)
+                                <option value="{{ $selectItemKey }}" @if(@$content->data_values->$selectName ==
+                                    $selectItemKey) selected @endif>{{ $selectOption }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                    @else
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>{{__(keyToTitle($k))}}</label>
+                            <input type="text" class="form-control" name="{{$k}}"
+                                value="{{@$content->data_values->$k }}" required />
+                        </div>
+                    </div>
+
+                    @endif
+                    @endif
+                    @endif
+                    @endforeach
+                    @stack('divend')
+                </div>
+
+                <div class="form-group text-end">
+                    <button type="submit" class="btn btn-primary btn-global">@lang('Submit')</button>
+                </div>
+            </form>
+               
+              </div>
+
+             
+            </div>
+        </div>
+
+              {{-- policy pages --}}
+             
+    </div>
+
+      </div>
+   
 </div>
 @endif
 
 
 @if(@$section->element)
 
-<div class="d-flex flex-wrap justify-content-end mb-3">
+{{-- <div class="d-flex flex-wrap justify-content-end mb-3">
     <div class="d-inline">
         <div class="input-group justify-content-end">
             <input type="text" name="search_table" class="form-control bg--white" placeholder="@lang('Search')...">
             <button class="btn btn--primary input-group-text"><i class="fa fa-search"></i></button>
         </div>
     </div>
-</div>
+</div> --}}
 
 <div class="row">
-    <div class="col-lg-12">
+    <div class="col-lg-12 grid-margin stretch-card">
         <div class="card">
-            <div class="card-body p-0">
+          <div class="card-body">
                 <div class="table-responsive--sm table-responsive">
                     <table class="table table--light style--two custom-data-table">
                         <thead>
