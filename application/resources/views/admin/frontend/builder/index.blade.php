@@ -7,6 +7,7 @@
             <div class="card-body">
                 <form action="{{ route('admin.frontend.manage.pages.update')}}" method="POST">
                     @csrf
+                    
                     <input type="hidden" name="id" value="{{ $pdata->id }}">
                     <div class="row">
                         <div class="col-md-4">
@@ -37,7 +38,7 @@
 
 
 
-<div class="row">
+{{-- <div class="row">
     <div class="col-md-6 mt-md-0 mt-3">
         <div class="card">
             <div class="card-header">
@@ -97,7 +98,84 @@
             </div>
         </div>
     </div>
+</div> --}}
+
+<div class="main-panel">
+    <div class="content-wrapper ">
+        <div class="row">
+            
+                {{-- pages  --}}
+                    <div class="col-lg-6 grid-margin stretch-card">
+                        <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">{{__($pageTitle)}}</h4>
+                        
+                            <ol class="simple_with_no_drop vertical">
+                                @foreach($sections as $k => $secs)
+                                @if(!@$secs['no_selection'])
+                                <li class="highlight icon-move clearfix d-flex align-items-center">
+                                    
+                                    <span class="d-inline-block me-auto ms-2"> {{__($secs['name'])}}</span>
+                                    <i class="ms-auto d-inline-block remove-icon fa fa-times"></i>
+                                    <input type="hidden" name="secs[]" value="{{$k}}">
+                                    @if($secs['builder'])
+                                    <div class="float-end d-inline-block manage-content">
+                                        <a href="{{ route('admin.frontend.sections',$k) }}" target="_blank"
+                                            class="btn bg--primary text-center cog-btn" title="@lang('Manage Content')">
+                                            <i class="fa fa-pen p-0 m-0"></i>
+                                        </a>
+                                    </div>
+                                    @endif
+                                </li>
+                                @endif
+                                @endforeach
+                            </ol>
+                        </div>
+        
+                        
+                        </div>
+                    </div>
+           
+        
+               
+                    <div class="col-lg-6 grid-margin stretch-card">
+                        <div class="card">
+                            <div class="card-body">
+                            <h4 class="card-title">{{__($pageTitle)}}</h4>
+                            
+                            <form action="{{route('admin.frontend.manage.section.update',$pdata->id)}}" method="post">
+                                @csrf
+                                <ol class="simple_with_drop vertical sec-item">
+                                    @if($pdata->secs != null)
+                                    @foreach(json_decode($pdata->secs) as $sec)
+                                    <li class="highlight icon-move item">
+                                    
+                                        <span class="d-inline-block me-auto ms-2"> {{ __(@$sections[$sec]['name'])
+                                            }}</span>
+                                        <i class="ms-auto d-inline-block remove-icon fa fa-times"></i>
+                                        <input type="hidden" name="secs[]" value="{{$sec}}">
+                                    </li>
+                                    @endforeach
+                                    @endif
+                                </ol>
+                                <div class="form-group text-end">
+                                    <button type="submit" class="btn btn-primary btn-global">@lang('Update')</button>
+                                </div>
+                            </form>
+                            </div>
+        
+                            
+                        </div>
+                    </div>
+                
+        </div>
+            {{-- pages  --}}
+            
+       
+
+    </div>
 </div>
+
 @stop
 
 @push('script-lib')
@@ -188,7 +266,7 @@
     }
 
     .sec-item li i.fa-times {
-        color: #00adad;
+        color: #1f3bb3;
         padding-right: 15px;
     }
 
@@ -196,8 +274,8 @@
         display: block;
         margin: 10px 0;
         padding: 21px 20px;
-        color: #e0e0e0;
-        background: #ececec;
+        color: #1f3bb3;
+        background: #f4f5f7;
         font-size: 16px;
         font-weight: 600;
         border-radius: 6px;
@@ -207,8 +285,8 @@
     ol.sec-item li {
         margin: 10px 0;
         padding: 21px 20px;
-        color: #8c8c8c;
-        background: #ececec;
+        color: #1f3bb3;
+        background: #f4f5f7;
         font-size: 24px;
         font-weight: 600;
         display: flex;
@@ -261,7 +339,7 @@
     }
 
     .cog-btn i {
-        color: #ffffff !important
+        color: #1f3bc2 !important
     }
 
     .cog-btn:hover i {
