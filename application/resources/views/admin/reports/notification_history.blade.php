@@ -149,7 +149,7 @@
 
 @push('breadcrumb-plugins')
 @if(@$user)
-<a href="{{ route('admin.users.notification.single',$user->id) }}" class="btn btn--primary btn-sm"><i
+<a href="{{ route('admin.users.notification.single',$user->id) }}" class="btn btn-primary btn-sm"><i
         class="las la-paper-plane"></i> @lang('Send Notification')</a>
 @else
 <form action="" method="GET" class="form-inline float-sm-end">

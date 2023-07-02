@@ -7,8 +7,9 @@
           <div class="col-lg-4 mx-auto">
             <div class="auth-form-light text-left py-5 px-4 px-sm-5">
               <div class="brand-logo">
-                <img src="../../images/logo.svg" alt="logo">
+                <img src="{{getImage(getFilePath('logoIcon') .'/logo.png')}}" alt="@lang('image')">
               </div>
+              
               <h4>{{$pageTitle}}</h4>
               <h6 class="fw-light">@lang('Sign in to continue.')</h6>
               <form class="pt-3" action="{{route('admin.login')}}" method="POST">
