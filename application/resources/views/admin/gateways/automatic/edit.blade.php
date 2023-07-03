@@ -49,50 +49,52 @@
                     <input type="hidden" name="alias" value="{{ $gateway->alias }}">
                     <input type="hidden" name="description" value="{{ $gateway->description }}">
     
-                    <div class="card">
-                        <div class="card-body">
-                            <h4 class="card-title">{{ __($gateway->name) }}</h4>                  
-                                <div class="payment-method-item block-item">
-                                    <div class="px-3">
-                                        @if($gateway->code < 1000 && $gateway->extra)
-                                        <div class="payment-method-body">
-                                            <div class="row">
-                                                @foreach($gateway->extra as $key => $param)
-                                                <div class="form-group col-lg-6">
-                                                    <label>{{ __(@$param->title) }}</label>
-                                                    <div class="input-group">
-                                                        <input type="text" class="form-control" value="{{ route($param->value) }}"
-                                                            readonly />
-                                                        <button type="button" class="copyInput input-group-text bg--primary"
-                                                            title="@lang('Copy')"><i class="fa fa-copy"></i></button>
+                    <div class="row d-flex">
+                        <div class="col-6 mt-5">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">{{ __($gateway->name) }}</h4>                  
+                                        <div class="payment-method-item block-item">
+                                            <div class="px-3">
+                                                @if($gateway->code < 1000 && $gateway->extra)
+                                                <div class="payment-method-body">
+                                                    <div class="row">
+                                                        @foreach($gateway->extra as $key => $param)
+                                                        <div class="form-group col-lg-6">
+                                                            <label>{{ __(@$param->title) }}</label>
+                                                            <div class="input-group">
+                                                                <input type="text" class="form-control" value="{{ route($param->value) }}"
+                                                                    readonly />
+                                                                <button type="button" class="copyInput input-group-text bg--primary"
+                                                                    title="@lang('Copy')"><i class="fa fa-copy"></i></button>
+                                                            </div>
+            
+                                                        </div>
+                                                        @endforeach
                                                     </div>
-    
                                                 </div>
-                                                @endforeach
-                                            </div>
-                                        </div>
-                                        @endif
-                                        <div class="payment-method-body">
-                                            <div class="row">
-                                                @foreach($parameters->where('global', true) as $key => $param)
-                                                <div class="form-group col-lg-6">
-                                                    <label>{{ __(@$param->title) }}</label>
-                                                    <input type="text" class="form-control" name="global[{{ $key }}]"
-                                                        value="{{ @$param->value }}" required />
+                                                @endif
+                                                <div class="payment-method-body">
+                                                    <div class="row">
+                                                        @foreach($parameters->where('global', true) as $key => $param)
+                                                        <div class="form-group col-lg-6">
+                                                            <label>{{ __(@$param->title) }}</label>
+                                                            <input type="text" class="form-control" name="global[{{ $key }}]"
+                                                                value="{{ @$param->value }}" required />
+                                                        </div>
+                                                        @endforeach
+                                                    </div>
                                                 </div>
-                                                @endforeach
+            
                                             </div>
+            
                                         </div>
-    
+                                        <!-- payment-method-item start -->
                                     </div>
-    
-                                </div>
-                                <!-- payment-method-item start -->
                             </div>
-                    </div>
-    
-    
-                    @isset($gateway->currencies)
+                        </div>
+                        <div class="col-6">
+                            @isset($gateway->currencies)
                         @foreach($gateway->currencies as $gatewayCurrency)
                             <div class="card  {{$loop->index == 0 ? 'mt-5' : ''}} mb-4">
     
@@ -127,7 +129,7 @@
     
                                         <div class="payment-method-body">
                                             <div class="row">
-                                                <div class="col-sm-12 col-md-6 col-lg-6 col-xl-4">
+                                                <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4">
                                                     <div class="mt-2">
                                                         <div class="">
                                                             <div class="form-group">
@@ -155,7 +157,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-sm-12 col-md-6 col-lg-6 col-xl-4">
+                                                <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4">
                                                     <div class="mt-2">
                                                         <div class="">
                                                             <div class="form-group">
@@ -182,7 +184,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-sm-12 col-md-6 col-lg-6 col-xl-4">
+                                                <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4">
                                                     <div class="mt-2">
                                                         <div class="">
                                                             <div class="row">
@@ -259,7 +261,7 @@
     
     
                         <div class="card border-primary mt-5 newMethodCurrency d-none">
-                           
+                          
                                 <div class="card-body">
     
                                     <div class="payment-method-item child--item newMethodCurrency d-none">
@@ -359,7 +361,7 @@
                                                         <div class="form-group">
                                                             <label>@lang('Rate')</label>
                                                             <div class="input-group">
-                                                                <span class="input-group-text bg--primary">
+                                                                <span class="input-group-text bg-primary">
                                                                     <b>1 </b>&nbsp; {{ __($general->cur_text) }}&nbsp; =
                                                                 </span>
                                                                 <input disabled type="number" step="any" class="form-control"
@@ -397,7 +399,9 @@
     
                                 </div>
                         </div>
-    
+                        </div>
+                        
+                    </div>
     
                         <button type="submit" class="btn btn-primary btn-global my-4 float-start">
                             @lang('Submit')
