@@ -99,12 +99,11 @@
                             @isset($gateway->currencies)
                             @foreach($gateway->currencies as $gatewayCurrency)
                             <div class="card  {{$loop->index == 0 ? 'mt-5' : ''}} mb-4">
-    
-                               
+
                                     <div class="content w-100 ps-0">
                                         <div class="d-flex justify-content-between">
                                             <div class="form-group">
-                                                <h4 class="bg-primary">{{ __($gateway->name) }} - {{__($gatewayCurrency->currency)}}
+                                                <h4 class="card-title text-primary">{{ __($gateway->name) }} - {{__($gatewayCurrency->currency)}}
                                                 </h4>
                                                 <input type="text" hidden class="form-control"
                                                     name="currency[{{ $currencyIndex }}][name]"
@@ -131,7 +130,105 @@
     
                                         <div class="payment-method-body">
                                             <div class="row">
-                                                <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4">
+                                                <div class="col-6">
+                                                    <div class="form-group">
+                                                        <label>@lang('Min')</label>
+                                                        <div class="input-group">
+                                                            <input type="number" step="any" class="form-control"
+                                                                name="currency[{{ $currencyIndex }}][min_amount]"
+                                                                value="{{ getAmount($gatewayCurrency->min_amount) }}"
+                                                                required />
+                                                            <div class="input-group-text bg-primary">{{ __($general->cur_text)
+                                                                }}</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-6">
+                                                    <div class="form-group">
+                                                        <label>@lang('Max')</label>
+                                                        <div class="input-group">
+                                                            <input type="number" step="any" class="form-control"
+                                                                name="currency[{{ $currencyIndex }}][max_amount]"
+                                                                value="{{ getAmount($gatewayCurrency->max_amount) }}"
+                                                                required />
+                                                            <div class="input-group-text bg-primary">{{ __($general->cur_text)
+                                                                }}</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-6">
+                                                    <div class="form-group">
+                                                        <label>@lang('Fixed')</label>
+                                                        <div class="input-group">
+                                                            <input type="number" step="any" class="form-control"
+                                                                name="currency[{{ $currencyIndex }}][fixed_charge]"
+                                                                value="{{ getAmount($gatewayCurrency->fixed_charge) }}"
+                                                                required />
+                                                            <div class="input-group-text bg-primary">{{ __($general->cur_text)
+                                                                }}</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-6">
+                                                    <div class="form-group">
+                                                        <label>@lang('Percentage')</label>
+                                                        <div class="input-group">
+                                                            <input type="number" step="any" class="form-control"
+                                                                name="currency[{{ $currencyIndex }}][percent_charge]"
+                                                                value="{{ getAmount($gatewayCurrency->percent_charge) }}"
+                                                                required />
+                                                            <div class="input-group-text bg-primary">%</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-6">
+                                                    <div class="form-group">
+                                                        <label>@lang('Currency')</label>
+                                                        <input type="text"
+                                                            name="currency[{{ $currencyIndex }}][currency]"
+                                                            class="form-control border-radius-5 "
+                                                            value="{{ $gatewayCurrency->currency }}" readonly />
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-6">
+                                                    <div class="form-group">
+                                                        <label>@lang('Symbol')</label>
+                                                        <input type="text" name="currency[{{ $currencyIndex }}][symbol]"
+                                                            class="form-control border-radius-5 symbl"
+                                                            value="{{ $gatewayCurrency->symbol }}"
+                                                            data-crypto="{{ $gateway->crypto }}" required />
+                                                    </div>
+
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <div class="form-group">
+                                                        <label>@lang('Dollar Rate')</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-text bg-primary">1 {{
+                                                                __($general->cur_text) }} =</div>
+                                                            <input type="number" step="any" class="form-control"
+                                                                name="currency[{{ $currencyIndex }}][rate]"
+                                                                value="{{ getAmount($gatewayCurrency->rate) }}" required />
+                                                            <div class="input-group-text bg-primary"><span
+                                                                    class="currency_symbol text-white">{{
+                                                                    __($gatewayCurrency->baseSymbol()) }}</span></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                                {{-- <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4">
                                                     <div class="mt-2">
                                                         <div class="">
                                                             <div class="form-group">
@@ -185,8 +282,8 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4">
+                                                </div> --}}
+                                                {{-- <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4">
                                                     <div class="mt-2">
                                                         <div class="">
                                                             <div class="row">
@@ -226,7 +323,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
+                                                </div> --}}
                                                 @if($parameters->where('global', false)->count() != 0 )
                                                 @php
                                                 $globalParameters = json_decode($gatewayCurrency->gateway_parameter);
