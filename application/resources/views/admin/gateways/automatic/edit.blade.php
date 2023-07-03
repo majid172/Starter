@@ -341,6 +341,43 @@
                                                     </div>
                                                 </div>
                                             </div>
+
+                                            <div class="row">
+                                                <div class="col-6">
+                                                    <div class="form-group">
+                                                        <label>@lang('Currency')</label>
+                                                        <input disabled type="step"
+                                                            class="form-control currencyText border-radius-5"
+                                                            name="currency[{{ $currencyIndex }}][currency]" readonly />
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-6">
+                                                    <div class="form-group">
+                                                        <label>@lang('Symbol')</label>
+                                                        <input disabled type="text"
+                                                            name="currency[{{ $currencyIndex }}][symbol]"
+                                                            class="form-control border-radius-5 symbl"
+                                                            ata-crypto="{{ $gateway->crypto }}" disabled />
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-12">
+                                                    <div class="form-group">
+                                                        <label>@lang('Rate')</label>
+                                                        <div class="input-group">
+                                                            <span class="input-group-text bg-primary">
+                                                                <b>1 </b>&nbsp; {{ __($general->cur_text) }}&nbsp; =
+                                                            </span>
+                                                            <input disabled type="number" step="any" class="form-control"
+                                                                name="currency[{{ $currencyIndex }}][rate]" required />
+                                                            <div class="input-group-text bg-primary"><span
+                                                                    class="currency_symbol text-white"></span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                                 
                                                 {{-- <div class="mx-2">
                                                     <div class="col-sm-12 col-md-6 col-lg-6 col-xl-4">
