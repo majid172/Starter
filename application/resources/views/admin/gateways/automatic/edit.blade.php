@@ -291,8 +291,59 @@
     
                                         <div class="payment-method-body">
                                             <div class="row mb-3">
-                                                <div class="col-sm-12 col-md-6 col-lg-6 col-xl-4">
-                                                    <div class="mx-2">
+
+                                                <div class="col-6">
+                                                    <div class="form-group">
+                                                        <label>@lang('Minimum Amount')</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-text bg-primary">{{ __($general->cur_text)
+                                                                }}</div>
+                                                            <input disabled type="number" step="any" class="form-control"
+                                                                name="currency[{{ $currencyIndex }}][min_amount]" required />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-6">
+                                                    <div class="form-group">
+                                                        <label>@lang('Maximum Amount')</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-text bg-primary">{{ __($general->cur_text)
+                                                                }}</div>
+                                                            <input disabled type="number" step="any" class="form-control"
+                                                                name="currency[{{ $currencyIndex }}][max_amount]" required />
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-6">
+                                                    <div class="form-group">
+                                                        <label>@lang('Fixed Charge')</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-text bg-primary">{{ __($general->cur_text)
+                                                                }}</div>
+                                                            <input disabled type="number" step="any" class="form-control"
+                                                                name="currency[{{ $currencyIndex }}][fixed_charge]" required />
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-6">
+                                                    <div class="form-group">
+                                                        <label>@lang('Percent Charge')</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-text bg-primary">%</div>
+                                                            <input disabled type="number" step="any" class="form-control"
+                                                                name="currency[{{ $currencyIndex }}][percent_charge]" required>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                                
+                                                {{-- <div class="mx-2">
+                                                    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-4">
                                                         <div class="form-group">
                                                             <label>@lang('Minimum Amount')</label>
                                                             <div class="input-group">
@@ -302,7 +353,9 @@
                                                                     name="currency[{{ $currencyIndex }}][min_amount]" required />
                                                             </div>
                                                         </div>
-    
+                                                    </div>
+
+                                                    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-4">
                                                         <div class="form-group">
                                                             <label>@lang('Maximum Amount')</label>
                                                             <div class="input-group">
@@ -313,9 +366,10 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
+                                                </div> --}}
+                                          
     
-                                                <div class="col-sm-12 col-md-6 col-lg-6 col-xl-4">
+                                                {{-- <div class="col-sm-12 col-md-6 col-lg-6 col-xl-4">
                                                     <div class="mx-2">
                                                         <div class="form-group">
                                                             <label>@lang('Fixed Charge')</label>
@@ -374,7 +428,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
+                                                </div> --}}
     
                                                 @if($parameters->where('global', false)->count() != 0 )
                                                 <div class="col-lg-12">
