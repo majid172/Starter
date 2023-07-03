@@ -289,14 +289,14 @@
                                         </div>
     
     
-                                        <div class="payment-method-body">
+                                        <div class="payment-method-body ">
                                             <div class="row mb-3">
 
                                                 <div class="col-6">
                                                     <div class="form-group">
                                                         <label>@lang('Minimum Amount')</label>
                                                         <div class="input-group">
-                                                            <div class="input-group-text bg-primary">{{ __($general->cur_text)
+                                                            <div class="input-group-text bg-primary text-light">{{ __($general->cur_text)
                                                                 }}</div>
                                                             <input disabled type="number" step="any" class="form-control"
                                                                 name="currency[{{ $currencyIndex }}][min_amount]" required />
@@ -307,7 +307,7 @@
                                                     <div class="form-group">
                                                         <label>@lang('Maximum Amount')</label>
                                                         <div class="input-group">
-                                                            <div class="input-group-text bg-primary">{{ __($general->cur_text)
+                                                            <div class="input-group-text bg-primary text-light">{{ __($general->cur_text)
                                                                 }}</div>
                                                             <input disabled type="number" step="any" class="form-control"
                                                                 name="currency[{{ $currencyIndex }}][max_amount]" required />
@@ -322,7 +322,7 @@
                                                     <div class="form-group">
                                                         <label>@lang('Fixed Charge')</label>
                                                         <div class="input-group">
-                                                            <div class="input-group-text bg-primary">{{ __($general->cur_text)
+                                                            <div class="input-group-text bg-primary text-light">{{ __($general->cur_text)
                                                                 }}</div>
                                                             <input disabled type="number" step="any" class="form-control"
                                                                 name="currency[{{ $currencyIndex }}][fixed_charge]" required />
@@ -334,7 +334,7 @@
                                                     <div class="form-group">
                                                         <label>@lang('Percent Charge')</label>
                                                         <div class="input-group">
-                                                            <div class="input-group-text bg-primary">%</div>
+                                                            <div class="input-group-text bg-primary text-light">%</div>
                                                             <input disabled type="number" step="any" class="form-control"
                                                                 name="currency[{{ $currencyIndex }}][percent_charge]" required>
                                                         </div>
@@ -366,7 +366,7 @@
                                                     <div class="form-group">
                                                         <label>@lang('Rate')</label>
                                                         <div class="input-group">
-                                                            <span class="input-group-text bg-primary">
+                                                            <span class="input-group-text bg-primary text-light">
                                                                 <b>1 </b>&nbsp; {{ __($general->cur_text) }}&nbsp; =
                                                             </span>
                                                             <input disabled type="number" step="any" class="form-control"
