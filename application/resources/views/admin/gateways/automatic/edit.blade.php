@@ -100,7 +100,7 @@
                             @foreach($gateway->currencies as $gatewayCurrency)
                             <div class="card  {{$loop->index == 0 ? 'mt-5' : ''}} mb-4">
     
-                                <div class="card-header bg-primary">
+                               
                                     <div class="content w-100 ps-0">
                                         <div class="d-flex justify-content-between">
                                             <div class="form-group">
@@ -120,7 +120,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                           
     
     
     
