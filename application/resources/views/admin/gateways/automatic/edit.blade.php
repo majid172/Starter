@@ -132,7 +132,7 @@
                                             <div class="row">
                                                 <div class="col-6">
                                                     <div class="form-group">
-                                                        <label>@lang('Min')</label>
+                                                        <label>@lang('Minimum')</label>
                                                         <div class="input-group">
                                                             <input type="number" step="any" class="form-control"
                                                                 name="currency[{{ $currencyIndex }}][min_amount]"
@@ -146,7 +146,7 @@
 
                                                 <div class="col-6">
                                                     <div class="form-group">
-                                                        <label>@lang('Max')</label>
+                                                        <label>@lang('Maximum')</label>
                                                         <div class="input-group">
                                                             <input type="number" step="any" class="form-control"
                                                                 name="currency[{{ $currencyIndex }}][max_amount]"
@@ -162,7 +162,7 @@
                                             <div class="row">
                                                 <div class="col-6">
                                                     <div class="form-group">
-                                                        <label>@lang('Fixed')</label>
+                                                        <label>@lang('Fixed charge')</label>
                                                         <div class="input-group">
                                                             <input type="number" step="any" class="form-control"
                                                                 name="currency[{{ $currencyIndex }}][fixed_charge]"
@@ -176,7 +176,7 @@
 
                                                 <div class="col-6">
                                                     <div class="form-group">
-                                                        <label>@lang('Percentage')</label>
+                                                        <label>@lang('Percentage Charge')</label>
                                                         <div class="input-group">
                                                             <input type="number" step="any" class="form-control"
                                                                 name="currency[{{ $currencyIndex }}][percent_charge]"
