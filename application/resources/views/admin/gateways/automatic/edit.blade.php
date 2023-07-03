@@ -60,7 +60,7 @@
                                                 <div class="payment-method-body">
                                                     <div class="row">
                                                         @foreach($gateway->extra as $key => $param)
-                                                        <div class="form-group col-lg-6">
+                                                        <div class="form-group col-lg-12">
                                                             <label>{{ __(@$param->title) }}</label>
                                                             <div class="input-group">
                                                                 <input type="text" class="form-control" value="{{ route($param->value) }}"
@@ -77,7 +77,7 @@
                                                 <div class="payment-method-body">
                                                     <div class="row">
                                                         @foreach($parameters->where('global', true) as $key => $param)
-                                                        <div class="form-group col-lg-6">
+                                                        <div class="form-group col-lg-12">
                                                             <label>{{ __(@$param->title) }}</label>
                                                             <input type="text" class="form-control" name="global[{{ $key }}]"
                                                                 value="{{ @$param->value }}" required />
@@ -93,9 +93,11 @@
                                     </div>
                             </div>
                         </div>
+
+
                         <div class="col-6">
                             @isset($gateway->currencies)
-                        @foreach($gateway->currencies as $gatewayCurrency)
+                            @foreach($gateway->currencies as $gatewayCurrency)
                             <div class="card  {{$loop->index == 0 ? 'mt-5' : ''}} mb-4">
     
                                 <div class="card-header bg-primary">
@@ -111,7 +113,7 @@
                                             <div class="remove-btn">
                                                 <button title="@lang('Remove')" type="button"
                                                     class="btn btn-danger configuration-currency confirmationBtn"
-                                                    data-question="@lang('Are you sure to delete this gateway currency?')"
+                                                    data-question="@lang('Are you sure to remove this gateway currency?')"
                                                     data-action="{{ route('admin.gateway.automatic.remove',$gatewayCurrency->id) }}">
                                                     <i class="la la-trash-o"></i>
                                                 </button>
