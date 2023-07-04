@@ -31166,3 +31166,11 @@ img {
   overflow: clip;
 }
 /*# sourceMappingURL=../maps/vertical-layout-light/style.css.map */
+.form-control, .asColorPicker-input, .dataTables_wrapper select, .select2-container--default .select2-selection--single, .select2-container--default .select2-selection--single .select2-search__field, .typeahead, .tt-query, .tt-hint {
+  border: 1px solid #dee2e6;
+  font-weight: 400;
+  font-size: 0.875rem;
+  border-radius: 4px;
+  height: 2rem;
+  padding: 8px 20px;
+}

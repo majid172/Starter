@@ -165,7 +165,7 @@
                                 <div class="col-9">
                                     <div class="file-upload-wrapper" data-text="@lang('Select your file!')">
                                         <input type="file" name="attachments[]" id="inputAttachments"
-                                            class="file-upload-field" />
+                                            class="file-upload-field form-control" />
                                     </div>
                                 </div>
                                 <div class="col-3">
