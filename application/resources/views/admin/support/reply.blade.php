@@ -138,12 +138,54 @@
                     </div>
                     <div class="col-sm-4  col-md-6 text-sm-end mt-sm-0 mt-3">
                         @if($ticket->status != 3)
-                        <button class="btn btn--danger btn-sm" type="button" data-bs-toggle="modal"
+                        <button class="btn btn-danger btn-sm" type="button" data-bs-toggle="modal"
                             data-bs-target="#DelModal">@lang('Close Ticket')
                         </button>
                         @endif
                     </div>
                 </div>
+
+                {{-- Reply  --}}
+                <form action="{{ route('admin.ticket.reply', $ticket->id) }}" enctype="multipart/form-data"
+                    method="post" class="form-horizontal">
+                    @csrf
+
+                    <div class="row ">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <textarea class="form-control" name="message" rows="5" required
+                                    id="inputMessage"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="row form-group">
+                                <div class="col-12 mb-2">
+                                    <span>@lang('Maximum upload size:') {{ ini_get('upload_max_filesize') }}</span>
+                                </div>
+                                <div class="col-9">
+                                    <div class="file-upload-wrapper" data-text="@lang('Select your file!')">
+                                        <input type="file" name="attachments[]" id="inputAttachments"
+                                            class="file-upload-field" />
+                                    </div>
+                                </div>
+                                <div class="col-3">
+                                    <button type="button" class="btn btn-white extraTicketAttachment ms-0"><i
+                                            class="fa fa-plus"></i></button>
+                                </div>
+                                <div class="col-12">
+                                    <div id="fileUploadsContainer"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 offset-md-3">
+                            <button class="btn btn-primary mt-4 float-end" type="submit" name="replayTicket"
+                                value="1">@lang('Reply')
+                            </button>
+                        </div>
+                    </div>
+
+                </form>
+
             </div>
             </div>
         </div>
