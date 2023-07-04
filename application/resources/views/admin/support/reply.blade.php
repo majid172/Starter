@@ -1,7 +1,7 @@
 @extends('admin.layouts.app')
 
 @section('panel')
-<div class="row gy-4">
+{{-- <div class="row gy-4">
     <div class="col-lg-12">
         <div class="card">
             <div class="card-body ">
@@ -123,8 +123,33 @@
             </div>
         </div>
     </div>
+</div> --}}
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="row">
+        <div class="col-lg-12 grid-margin stretch-card">
+            <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">{{$pageTitle}}</h4>
+                <div class="row">
+                    <div class="col-sm-8 col-md-6">
+                        @php echo $ticket->statusBadge; @endphp
+                        [@lang('Ticket#'){{ $ticket->ticket }}] {{ $ticket->subject }}
+                    </div>
+                    <div class="col-sm-4  col-md-6 text-sm-end mt-sm-0 mt-3">
+                        @if($ticket->status != 3)
+                        <button class="btn btn--danger btn-sm" type="button" data-bs-toggle="modal"
+                            data-bs-target="#DelModal">@lang('Close Ticket')
+                        </button>
+                        @endif
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+        </div>
+    </div>
 </div>
-
 
 
 
