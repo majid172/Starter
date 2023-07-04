@@ -173,7 +173,7 @@
                                             class="fa fa-plus"></i></button>
                                 </div>
                                 <div class="col-12">
-                                    <div id="fileUploadsContainer"></div>
+                                    <div id="fileUploadsContainer" ></div>
                                 </div>
                             </div>
                         </div>
@@ -246,10 +246,10 @@
             $("#fileUploadsContainer").append(`
                     <div class="row">
                         <div class="col-9 mb-3">
-                            <div class="file-upload-wrapper" data-text="@lang('Select your file!')"><input type="file" name="attachments[]" id="inputAttachments" class="file-upload-field"/></div>
+                            <div class="file-upload-wrapper" data-text="@lang('Select your file!')"><input type="file" name="attachments[]" id="inputAttachments" class="file-upload-field form-control"/></div>
                         </div>
                         <div class="col-3">
-                            <button type="button" class="btn text--danger extraTicketAttachmentDelete"><i class="la la-times ms-0"></i></button>
+                            <button type="button" class="btn text-danger extraTicketAttachmentDelete"><i class="la la-times ms-0"></i></button>
                         </div>
                     </div>
                 `)
