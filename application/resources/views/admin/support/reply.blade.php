@@ -152,8 +152,8 @@
 
                     <div class="row ">
                         <div class="col-md-12">
-                            <div class="form-group">
-                                <textarea class="form-control" name="message" rows="5" required
+                            <div class="form-group mt-3">
+                                <textarea class="form-control" name="message" rows="5" cols="15"
                                     id="inputMessage"></textarea>
                             </div>
                         </div>
