@@ -88,11 +88,11 @@
                             <div class="form-group">
                                 <label class="fw-bold">@lang('SMS Body') </label>
                                 <textarea class="form-control" rows="4" placeholder="@lang('SMS Body')" name="sms_body"
-                                    required>{{ $general->sms_body }}</textarea>
+                                   >{{ $general->sms_body }}</textarea>
                             </div>
                         </div>
                         <div class="col-md-12 text-end">
-                            <button type="submit" class="btn btn--primary btn-global">@lang('Save')</button>
+                            <button type="submit" class="btn btn-primary btn-global">@lang('Submit')</button>
                         </div>
                     </div>
                 </form>

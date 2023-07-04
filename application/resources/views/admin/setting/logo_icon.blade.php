@@ -35,7 +35,7 @@
                             .time()) }}" alt="{{config('app.name')}}" width="70">
                         </div>
                     </div>
-                    <div class="form-group mb-0 text-end">
+                    <div class="form-group mb-0 ">
                         <button type="submit" class="btn btn-primary btn-global">@lang('Submit')</button>
                     </div>
                 </div>
@@ -44,3 +44,50 @@
     </div>
 </div>
 @endsection
+
+@push('style')
+    <style>
+        /* Styles for the container div */
+.col-md-4 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Styles for the label */
+label {
+  /* Add your label styles here */
+}
+
+/* Styles for the file upload wrapper */
+.file-upload-wrapper {
+  /* Add your file upload wrapper styles here */
+}
+
+/* Styles for the file upload field */
+.file-upload-field {
+  /* Add your file upload field styles here */
+}
+
+/* Styles for the logo image container */
+.bg--dark {
+  /* Add your styles for the dark background container here */
+}
+
+/* Styles for the logo image */
+.bg--dark img {
+  /* Add your styles for the logo image inside the dark container here */
+}
+
+/* Styles for the logo image container with gray background */
+.bg--gray {
+  /* Add your styles for the gray background container here */
+}
+
+/* Styles for the logo image inside the gray container */
+.bg--gray img {
+  /* Add your styles for the logo image inside the gray container here */
+}
+
+    </style>
+@endpush
