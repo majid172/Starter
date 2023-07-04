@@ -274,8 +274,8 @@
                 <form method="post" action="{{ route('admin.ticket.close', $ticket->id) }}">
                     @csrf
                     <input type="hidden" name="replayTicket" value="2">
-                    <button type="button" class="btn btn--dark" data-bs-dismiss="modal"> @lang('No') </button>
-                    <button type="submit" class="btn btn--primary"> @lang('Yes') </button>
+                    <button type="button" class="btn btn-dark" data-bs-dismiss="modal"> @lang('No') </button>
+                    <button type="submit" class="btn btn-primary"> @lang('Yes') </button>
                 </form>
             </div>
         </div>

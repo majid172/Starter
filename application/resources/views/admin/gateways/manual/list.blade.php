@@ -37,7 +37,7 @@
                         <td>
                             <div class="button--group">
                                 <a title="@lang('Edit')"
-                                    href="{{ route('admin.gateway.automatic.edit', $gateway->alias) }}"
+                                    href="{{ route('admin.gateway.manual.edit', $gateway->alias) }}"
                                     class="btn btn-sm btn-primary editGatewayBtn">
                                     <i class="la la-pencil"></i>
                                 </a>
@@ -47,14 +47,14 @@
                                 <button title="@lang('Enable')"
                                     class="btn btn-sm btn-success ms-1 confirmationBtn"
                                     data-question="@lang('Are you sure to enable this gateway?')"
-                                    data-action="{{ route('admin.gateway.automatic.activate',$gateway->code) }}">
+                                    data-action="{{ route('admin.gateway.manual.activate',$gateway->code) }}">
                                     <i class="la la-check-circle"></i>
                                 </button>
                                 @else
                                 <button title="@lang('Disable')"
                                     class="btn btn-sm btn-danger ms-1 confirmationBtn"
                                     data-question="@lang('Are you sure to disable this gateway?')"
-                                    data-action="{{ route('admin.gateway.automatic.deactivate',$gateway->code) }}">
+                                    data-action="{{ route('admin.gateway.manual.deactivate',$gateway->code) }}">
                                     <i class="la la-eye-slash"></i>
                                 </button>
                                 @endif
