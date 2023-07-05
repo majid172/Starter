@@ -325,7 +325,7 @@
                                         <div class="d-flex justify-content-between p-2">
                                             <h5>@lang('User Input Fields')</h5>
                                             <button type="button"
-                                                class="btn btn-sm bg-primary float-end form-generate-btn"> <i
+                                                class="btn btn-sm bg-primary text-light float-end form-generate-btn"> <i
                                                     class="la la-fw la-plus"></i>@lang('Add New')</button>
                                         </div>
                                         <div class="card-body">
@@ -388,8 +388,6 @@
                         </div>
                     </div>
                 </div>
-
-               
                 <button type="submit" class="btn btn-primary btn-global">@lang('Submit')</button>
              
             </form>

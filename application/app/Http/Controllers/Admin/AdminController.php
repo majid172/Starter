@@ -62,9 +62,6 @@ class AdminController extends Controller
                     ->pluck('created_at_count', 'date_name');
         $userLogins['labels'] = $userLoginsReport->keys();
         $userLogins['values'] = $userLoginsReport->values();
-
-
-    
     
 
         // UserLogin Report Graph

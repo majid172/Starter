@@ -76,12 +76,6 @@
                   </div>
                 </div> 
 
-
-{{-- chart --}}
-{{-- <canvas id="userLoginsChart"></canvas> --}}
-
-
-
                 <div class="row">
                     <div class="col-lg-6 d-flex flex-column">
                         <div class="card">
@@ -89,30 +83,14 @@
                                 <div class="d-sm-flex justify-content-between align-items-start">
                                   <div>
                                     <h4 class="card-title card-title-dash">@lang('Daily Logins (Last 10 days)')</h4>
-                                   <p class="card-subtitle card-subtitle-dash">Lorem ipsum dolor sit amet consectetur adipisicing elit</p>
+                                  
                                   </div>
-    
-                                  <div>
-                                    <div class="dropdown">
-                                      <button class="btn btn-secondary dropdown-toggle toggle-dark btn-lg mb-0 me-0" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> This month </button>
-                                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
-                                        <h6 class="dropdown-header">Settings</h6>
-                                        <a class="dropdown-item" href="#">Action</a>
-                                        <a class="dropdown-item" href="#">Another action</a>
-                                        <a class="dropdown-item" href="#">Something else here</a>
-                                        <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="#">Separated link</a>
-                                      </div>
-                                    </div>
-                                  </div>
+                                 
                                 </div>
-                                <div class="d-sm-flex align-items-center mt-1 justify-content-between">
-                                  <div class="d-sm-flex align-items-center mt-4 justify-content-between"><h2 class="me-2 fw-bold">$36,2531.00</h2><h4 class="me-2">USD</h4><h4 class="text-success">(+1.37%)</h4></div>
-                                  <div class="me-3"><div id="marketing-overview-legend"></div></div>
-                                </div>
-                                <div class="chartjs-bar-wrapper mt-3">
-                                  <canvas id="marketingOverview"></canvas>
-                                </div>
+                               
+
+                                <div id="chartContainer"style="height: 300px; width: 100%;"></div>
+
                             </div>
                         </div>
                     </div>
@@ -152,11 +130,6 @@
                 </div>
 
 
-                {{-- charts --}}
-
-
-                {{-- Recent support tickets --}}
-
                 <div class="row mt-4">
                     <div class="col-12 grid-margin stretch-card">
                         <div class="card card-rounded">
@@ -174,7 +147,6 @@
                                 <table class="table select-table">
                                 <thead>
                                     <tr>
-                                    
                                     <th>@lang('Subject')</th>
                                     <th>@lang('Status')</th>
                                    
@@ -222,6 +194,72 @@
 @endsection
 
 @push('script')
+<script src="https://cdn.canvasjs.com/canvasjs.min.js"></script>
+<script>
+  
+  window.onload = function () {
+  
+    var chart = new CanvasJS.Chart("chartContainer", {
+  animationEnabled: true,
+  theme: "light2",
+  title: {},
+  data: [{
+    type: "line",
+    indexLabelFontSize: 12,
+    dataPoints: [
+      @foreach($userLogins['values'] as $key => $value)
+        { y: {{ $value }}, indexLabel: "{{ $userLogins['labels'][$key] }}" },
+      @endforeach
+    ]
+  }]
+});
+chart.render();
 
+  }
+  </script>
 
 @endpush
+
+{{-- 
+
+<!DOCTYPE HTML>
+<html>
+<head>  
+<script>
+window.onload = function () {
+
+var chart = new CanvasJS.Chart("chartContainer", {
+	animationEnabled: true,
+	theme: "light2",
+	title:{
+		text: "Simple Line Chart"
+	},
+	data: [{        
+		type: "line",
+      	indexLabelFontSize: 16,
+		dataPoints: [
+			{ y: 450 },
+			{ y: 414},
+			{ y: 520, indexLabel: "\u2191 highest",markerColor: "red", markerType: "triangle" },
+			{ y: 460 },
+			{ y: 450 },
+			{ y: 500 },
+			{ y: 480 },
+			{ y: 480 },
+			{ y: 410 , indexLabel: "\u2193 lowest",markerColor: "DarkSlateGrey", markerType: "cross" },
+			{ y: 500 },
+			{ y: 480 },
+			{ y: 510 }
+		]
+	}]
+});
+chart.render();
+
+}
+</script>
+</head>
+<body>
+<div id="chartContainer" style="height: 300px; width: 100%;"></div>
+<script src="https://cdn.canvasjs.com/canvasjs.min.js"></script>
+</body>
+</html> --}}
