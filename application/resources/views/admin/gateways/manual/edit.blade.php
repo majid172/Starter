@@ -322,10 +322,10 @@
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="card border mt-3">
-                                        <div class="card-header d-flex justify-content-between">
+                                        <div class="d-flex justify-content-between p-2">
                                             <h5>@lang('User Input Fields')</h5>
                                             <button type="button"
-                                                class="btn btn-sm bg--primary float-end form-generate-btn"> <i
+                                                class="btn btn-sm bg-primary float-end form-generate-btn"> <i
                                                     class="la la-fw la-plus"></i>@lang('Add New')</button>
                                         </div>
                                         <div class="card-body">
