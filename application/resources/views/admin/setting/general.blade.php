@@ -251,6 +251,42 @@
         </div>
         
       </div>
+      <div class="row">
+        <div class="col-md-12 grid-margin stretch-card">
+          <div class="card">
+            <div class="card-body">
+              <h4 class="card-title">@lang('Logo & Favicon')</h4>
+              <p class="card-description">
+                @lang('Basic configuration of your website')
+              </p>
+              <form class="forms-sample" method="POST" action="">
+                @csrf
+                <div class="row">
+                    <div class="col-lg-6 col-sm-12 mb-2">
+                        <input type="file"   accept=".png, .jpg, .jpeg" name="logo" class="file-upload-field form-control" />
+                        <img src=" {{ getImage(getFilePath('logoIcon').'/logo.png', '?'
+                        .time()) }}" alt="{{config('app.name')}}" class="logo">
+                    </div>
+                    <div class="col-lg-6 col-sm-12 mb-2">
+                        <input type="file" accept=".png, .jpg, .jpeg"  name="favicon"
+                                    class="file-upload-field form-control" />
+                         <img src=" {{ getImage(getFilePath('logoIcon') .'/favicon.png', '?'
+                                    .time()) }}" alt="{{config('app.name')}}" class="favicon">
+                    </div>
+                </div>
+               
+                <button type="submit" class="btn btn-primary me-2">@lang('Submit')</button>
+                
+              </form>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+
+
+
+
     </div>
 </div>
 @endsection

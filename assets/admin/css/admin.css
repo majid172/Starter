@@ -31174,3 +31174,15 @@ img {
   height: 2rem;
   padding: 8px 20px;
 }
+
+/* Configuration Globally */
+.logo{
+  width: 50%;
+    margin: 20px;
+}
+.favicon{
+  margin-top: 29px;
+  margin-left: 20px;
+  width: 64px;
+  height: 64px;
+}
