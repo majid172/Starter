@@ -53,10 +53,9 @@
         </a>
         <div class="collapse" id="withdraw">
           <ul class="nav flex-column sub-menu">
-            <li class="nav-item"> <a class="nav-link" href="{{route('admin.withdraw.list')}}">@lang('withdraw List')</a></li>
+            <li class="nav-item"> <a class="nav-link" href="{{route('admin.withdraw.log')}}">@lang('withdraw List')</a></li>
             <li class="nav-item"> <a class="nav-link" href="{{route('admin.withdraw.pending')}}">@lang('Pending')</a></li>
             <li class="nav-item"> <a class="nav-link" href="{{route('admin.withdraw.approved')}}">@lang('Approved')</a></li>
-            <li class="nav-item"> <a class="nav-link" href="{{route('admin.withdraw.successful')}}">@lang('Successful')</a></li>
             <li class="nav-item"> <a class="nav-link" href="{{route('admin.withdraw.rejected')}}">@lang('Rejected')</a></li>
           </ul>
         </div>
