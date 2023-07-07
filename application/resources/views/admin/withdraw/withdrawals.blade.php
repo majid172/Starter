@@ -62,7 +62,7 @@
                             <td>
                                 <a title="@lang('Details')"
                                     href="{{ route('admin.withdraw.details', $withdraw->id) }}"
-                                    class="btn btn-sm btn--primary ms-1">
+                                    class="btn btn-sm btn-primary ms-1">
                                     <i class="la la-eye"></i>
                                 </a>
                             </td>

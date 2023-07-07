@@ -71,7 +71,7 @@
         <div class="collapse" id="trx">
           <ul class="nav flex-column sub-menu">
            
-            <li class="nav-item"><a class="nav-link" href="{{route('admin.withdraw.pending')}}">@lang('Withdraw')</a></li>
+         
             <li class="nav-item"><a class="nav-link" href="{{route('admin.report.transaction')}}">@lang('Transections')</a></li>
           </ul>
         </div>
