@@ -44,6 +44,23 @@
 
 
       {{-- withdraw --}}
+      <li class="nav-item nav-category">@lang('Withdraw Management')</li>
+      <li class="nav-item">
+        <a class="nav-link" data-bs-toggle="collapse" href="#withdraw" aria-expanded="false" aria-controls="withdraw">
+          <i class="menu-icon mdi mdi-cash"></i>
+          <span class="menu-title">@lang('Withdraw Details')</span>
+          <i class="menu-arrow"></i> 
+        </a>
+        <div class="collapse" id="withdraw">
+          <ul class="nav flex-column sub-menu">
+            <li class="nav-item"> <a class="nav-link" href="{{route('admin.withdraw.list')}}">@lang('withdraw List')</a></li>
+            <li class="nav-item"> <a class="nav-link" href="{{route('admin.withdraw.pending')}}">@lang('Pending')</a></li>
+            <li class="nav-item"> <a class="nav-link" href="{{route('admin.withdraw.approved')}}">@lang('Approved')</a></li>
+            <li class="nav-item"> <a class="nav-link" href="{{route('admin.withdraw.successful')}}">@lang('Successful')</a></li>
+            <li class="nav-item"> <a class="nav-link" href="{{route('admin.withdraw.rejected')}}">@lang('Rejected')</a></li>
+          </ul>
+        </div>
+      </li>
 
 
       <li class="nav-item">
