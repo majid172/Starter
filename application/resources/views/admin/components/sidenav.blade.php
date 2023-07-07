@@ -21,7 +21,31 @@
           </ul>
         </div>
       </li>
-      <li class="nav-item nav-category">@lang('Trx Management')</li>
+
+      {{-- deposit management --}}
+      <li class="nav-item nav-category">@lang('Deposit Management')</li>
+      <li class="nav-item">
+        <a class="nav-link" data-bs-toggle="collapse" href="#deposit" aria-expanded="false" aria-controls="deposit">
+          <i class="menu-icon mdi mdi-cash"></i>
+          <span class="menu-title">@lang('Deposit Details')</span>
+          <i class="menu-arrow"></i> 
+        </a>
+        <div class="collapse" id="deposit">
+          <ul class="nav flex-column sub-menu">
+            <li class="nav-item"> <a class="nav-link" href="{{route('admin.deposit.list')}}">@lang('Deposit List')</a></li>
+            <li class="nav-item"> <a class="nav-link" href="{{route('admin.deposit.initiated')}}">@lang('Initiated')</a></li>
+            <li class="nav-item"> <a class="nav-link" href="{{route('admin.deposit.pending')}}">@lang('Pending')</a></li>
+            <li class="nav-item"> <a class="nav-link" href="{{route('admin.deposit.approved')}}">@lang('Approved')</a></li>
+            <li class="nav-item"> <a class="nav-link" href="{{route('admin.deposit.successful')}}">@lang('Successful')</a></li>
+            <li class="nav-item"> <a class="nav-link" href="{{route('admin.deposit.rejected')}}">@lang('Rejected')</a></li>
+          </ul>
+        </div>
+      </li>
+
+
+      {{-- withdraw --}}
+
+
       <li class="nav-item">
         <a class="nav-link" data-bs-toggle="collapse" href="#trx" aria-expanded="false" aria-controls="trx">
           <i class="menu-icon mdi mdi-card-text-outline"></i>
@@ -30,7 +54,7 @@
         </a>
         <div class="collapse" id="trx">
           <ul class="nav flex-column sub-menu">
-            <li class="nav-item"><a class="nav-link" href="{{route('admin.deposit.pending')}}">@lang('Deposit')</a></li>
+           
             <li class="nav-item"><a class="nav-link" href="{{route('admin.withdraw.pending')}}">@lang('Withdraw')</a></li>
             <li class="nav-item"><a class="nav-link" href="{{route('admin.report.transaction')}}">@lang('Transections')</a></li>
           </ul>

@@ -69,6 +69,7 @@ class Deposit extends Model
 
     public function scopeApproved()
     {
+     
         return $this->where('method_code','>=',1000)->where('status', 1);
     }
 

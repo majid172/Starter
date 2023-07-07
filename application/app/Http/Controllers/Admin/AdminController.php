@@ -46,8 +46,12 @@ class AdminController extends Controller
                     ->whereYear('created_at', date('Y'))->whereStatus(1)
                     ->groupByRaw("MONTHNAME(created_at)")
                     ->pluck('amount', 'month_name');
+
         $depositsChart['labels'] = $deposits->keys();
         $depositsChart['values'] = $deposits->values();
+
+        
+
         $withdrawalsReport = Withdrawal::selectRaw("SUM(amount) as amount, MONTHNAME(created_at) as month_name")->orderBy('created_at')
                     ->whereYear('created_at', date('Y'))->whereStatus(1)
                     ->groupByRaw("MONTHNAME(created_at)")
@@ -55,7 +59,7 @@ class AdminController extends Controller
         $withdrawalsChart['labels'] = $withdrawalsReport->keys();
         $withdrawalsChart['values'] = $withdrawalsReport->values();
         // Monthly Deposit & Withdraw Report Graph
-
+   
         // UserLogin Report Graph
         $userLoginsReport = UserLogin::selectRaw("COUNT(*) as created_at_count, DATE(created_at) as date_name")->orderBy('created_at', 'desc')
                     ->groupByRaw("DATE(created_at)")->limit(10)

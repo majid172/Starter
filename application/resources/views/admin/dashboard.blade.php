@@ -89,7 +89,7 @@
                                 </div>
                                
 
-                                <div id="chartContainer"style="height: 300px; width: 100%;"></div>
+                                <div id="loginChart"style="height: 300px; width: 100%;"></div>
 
                             </div>
                         </div>
@@ -107,7 +107,7 @@
                                 </div>
                                
 
-                                <div id="chartContainer"style="height: 300px; width: 100%;"></div>
+                                <div id="depositChart"style="height: 300px; width: 100%;"></div>
 
                             </div>
                         </div>
@@ -185,8 +185,8 @@
 <script>
   
   window.onload = function () {
-  
-    var chart = new CanvasJS.Chart("chartContainer", {
+
+    var chart = new CanvasJS.Chart("loginChart", {
   animationEnabled: true,
   theme: "light2",
   title: {},
@@ -200,53 +200,54 @@
     ]
   }]
 });
-chart.render();
 
-  }
-  </script>
 
-@endpush
+var depositChart = new CanvasJS.Chart("depositChart", {
+    animationEnabled: true,
+    
+    axisY :{
+      valueFormatString: "#0,.",
+      suffix: "k"
+    },
+    axisX: {
+      title: "Months After Launch"
+    },
+    toolTip: {
+      shared: true
+    },
+    data: [{        
+      type: "stackedArea",
+      showInLegend: true,
+      toolTipContent: "<span style=\"color:#4F81BC\"><strong>{name}: </strong></span> {y}",
+      name: "iOS",
+      // Assuming you have the results of the query stored in the variable: $withdrawalsChart
 
-{{-- 
+dataPoints: [
+  @foreach($withdrawalsChart['labels'] as $key => $label)
+      { x: {{ $key + 1 }}, y: {{ $withdrawalsChart['values'][$key] }} },
+  @endforeach
+ 
+]
+// Assuming you have the results of the query stored in the variables: $depositsChart and $withdrawalsChart
+  },
+    {        
+      type: "stackedArea",  
+      name: "Deposit",
+      toolTipContent: "<span style=\"color:#C0504E\"><strong>{name}: </strong></span> {y}<br><b>Total:<b> #total",
+      showInLegend: true,
+      dataPoints: [
+      @foreach($depositsChart['labels'] as $key => $label)
+          { x: {{ $key + 1 }}, y: {{ $depositsChart['values'][$key] }} },
+      @endforeach
+]
+    }]
+  });
 
-<!DOCTYPE HTML>
-<html>
-<head>  
-<script>
-window.onload = function () {
+  depositChart.render();
+  chart.render();
 
-var chart = new CanvasJS.Chart("chartContainer", {
-	animationEnabled: true,
-	theme: "light2",
-	title:{
-		text: "Simple Line Chart"
-	},
-	data: [{        
-		type: "line",
-      	indexLabelFontSize: 16,
-		dataPoints: [
-			{ y: 450 },
-			{ y: 414},
-			{ y: 520, indexLabel: "\u2191 highest",markerColor: "red", markerType: "triangle" },
-			{ y: 460 },
-			{ y: 450 },
-			{ y: 500 },
-			{ y: 480 },
-			{ y: 480 },
-			{ y: 410 , indexLabel: "\u2193 lowest",markerColor: "DarkSlateGrey", markerType: "cross" },
-			{ y: 500 },
-			{ y: 480 },
-			{ y: 510 }
-		]
-	}]
-});
-chart.render();
 
 }
 </script>
-</head>
-<body>
-<div id="chartContainer" style="height: 300px; width: 100%;"></div>
-<script src="https://cdn.canvasjs.com/canvasjs.min.js"></script>
-</body>
-</html> --}}
+
+@endpush

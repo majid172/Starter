@@ -1,12 +1,12 @@
 @extends('admin.layouts.app')
 
 @section('panel')
-<div class="row">
-    <div class="col-12">
+<div class="main-panel">
+    <div class="content-wrapper">
         <div class="row">
-            <div class="col-xl-4">
-                <div class="row gy-2 pb-2 gx-2">
-                    <div class="col-sm-6 col-xl-12">
+            <div class="col-xl-12">
+                <div class="row gy-2 pb-2 gx-2 mb-4">
+                    <div class="col-sm-6 col-xl-3">
                         <a href="{{ route('admin.report.transaction') }}?search={{ $user->username }}">
                             <div class="card prod-p-card background-pattern">
                                 <div class="card-body">
@@ -24,7 +24,7 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col-sm-6 col-xl-12">
+                    <div class="col-sm-6 col-xl-3">
                         <a href="{{ route('admin.deposit.list') }}?search={{ $user->username }}">
                             <div class="card prod-p-card background-pattern-white">
                                 <div class="card-body">
@@ -43,7 +43,7 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col-sm-6 col-xl-12">
+                    <div class="col-sm-6 col-xl-3">
                         <a href="{{ route('admin.withdraw.log') }}?search={{ $user->username }}">
                             <div class="card prod-p-card background-pattern-white">
                                 <div class="card-body">
@@ -62,7 +62,7 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col-sm-6 col-xl-12">
+                    <div class="col-sm-6 col-xl-3">
                         <a href="{{ route('admin.report.transaction') }}?search={{ $user->username }}">
                             <div class="card prod-p-card background-pattern">
                                 <div class="card-body">
@@ -81,64 +81,12 @@
                     </div>
                 </div>
             </div>
-            <div class="col-xl-8">
+           
+        </div>
+        <div class="row">
+            <div class="col-xl-9">
                 <div class="card">
-                    <div class="card p-2">
-                        <ul class="d-flex flex-wrap gap-1">
-                            <li class="flex-grow-1 flex-shrink-0">
-                                <a class="d-block btn bg--primary bal-btn" href="javascript:void(0)"
-                                    data-bs-toggle="modal" data-bs-target="#addSubModal" data-act="add"><i
-                                        class="las la-plus-circle"></i>
-                                    @lang('Add
-                                    Balance')</a>
-                            </li>
-                            <li class="flex-grow-1 flex-shrink-0">
-                                <a class="d-block btn bg--primary bal-btn" href="javascript:void(0)"
-                                    data-bs-toggle="modal" data-bs-target="#addSubModal" data-act="sub"><i
-                                        class="las la-minus-circle"></i>
-                                    @lang('Substract
-                                    Balance')</a>
-                            </li>
-
-                            <li class="flex-grow-1 flex-shrink-0">
-                                <a class="d-block btn bg--primary" href="{{route('admin.users.login',$user->id)}}"
-                                    target="_blank">
-                                    <i class="las la-sign-in-alt"></i> @lang('Login as User')
-                                </a>
-                            </li>
-                            <li class="flex-grow-1 flex-shrink-0">
-                                <a class="d-block btn bg--primary"
-                                    href="{{ route('admin.users.notification.log',$user->id) }}">
-                                    <i class="las la-bell"></i> @lang('Notifiactions')
-                                </a>
-                            </li>
-                            <li class="flex-grow-1 flex-shrink-0">
-                                <a class="d-block btn bg--primary"
-                                    href="{{route('admin.report.login.history')}}?search={{ $user->username }}">
-                                    <i class="las la-list-alt"></i> @lang('Login History')
-                                </a>
-                            </li>
-                            <li class="flex-grow-1 flex-shrink-0">
-                                @if($user->status == 1)
-                                <a class="d-block btn bg--primary" class="userStatus" data-bs-toggle="modal"
-                                    data-bs-target="#userStatusModal" href="javascript:void(0)">
-                                    <i class="las la-ban"></i> @lang('Ban User')
-                                </a>
-                                @else
-                                <a class="userStatus bg--primary" data-bs-toggle="modal"
-                                    data-bs-target="#userStatusModal" href="javascript:void(0)">
-                                    <i class="las la-undo"></i> @lang('Unban User')
-                                </a>
-                                @endif
-                            </li>
-                            <li class="flex-grow-1 flex-shrink-0">
-                                <a class="d-block btn bg--primary"
-                                    href="{{route('admin.users.notification.single', $user->id)}}">
-                                    <i class="las la-paper-plane"></i> @lang('Send Email')
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
+           
                     <div class="card-header">
                         <h5 class="card-title mb-0">@lang('Information of') {{$user->fullname}}</h5>
                     </div>
@@ -268,8 +216,8 @@
                             </div>
                             <div class="row mt-4">
                                 <div class="col-md-12">
-                                    <div class="form-group  text-end mb-0">
-                                        <button type="submit" class="btn btn--primary btn-global">@lang('Save')
+                                    <div class="form-group mb-0">
+                                        <button type="submit" class="btn btn-primary btn-global">@lang('Submit')
                                         </button>
                                     </div>
                                 </div>
@@ -278,10 +226,74 @@
                     </div>
                 </div>
             </div>
+            <div class="col-xl-3">
+                <div class="card ">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">@lang('User Operation')</h5>
+                    </div>
+                    <ul class="user-op">
+                      
+                        <li class="">
+                            <a class="btn " href="{{route('admin.users.login',$user->id)}}"
+                                target="_blank">
+                                <i class="text-primary las la-sign-in-alt"></i> @lang('Login as User')
+                            </a>
+                        </li>
+             
+                        <li class=" ">
+                            <a class="btn "
+                                href="{{route('admin.report.login.history')}}?search={{ $user->username }}">
+                                <i class="las la-list-alt  text-secondary"></i> @lang('Login History')
+                            </a>
+                        </li>
+                        <li class=" ">
+                            @if($user->status == 1)
+                            <a class="btn " class="userStatus" data-bs-toggle="modal"
+                                data-bs-target="#userStatusModal" href="javascript:void(0)">
+                                <i class="las la-ban text-danger"></i> @lang('Ban User')
+                            </a>
+                            @else
+                            <a class="userStatus" data-bs-toggle="modal"
+                                data-bs-target="#userStatusModal" href="javascript:void(0)">
+                                <i class="las la-undo"></i> @lang('Unban User')
+                            </a>
+                            @endif
+                        </li>
+                        <li class=" ">
+                            <a class="btn"
+                                href="{{route('admin.users.notification.single', $user->id)}}">
+                                <i class="las la-paper-plane text-warning"></i> @lang('Send Email')
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+               
+               
+            </div>
+
         </div>
 
     </div>
 </div>
+
+
+
+{{-- <div class="row">
+    <div class="col-md-12 grid-margin stretch-card">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">@lang('Logo & Favicon')</h4>
+          <p class="card-description">
+            @lang('Basic configuration of your website')
+          </p>
+          
+        </div>
+      </div>
+    </div>
+    
+  </div> --}}
+
+
 
 {{-- Add Sub Balance MODAL --}}
 <div id="addSubModal" class="modal fade" tabindex="-1" role="dialog">
@@ -312,7 +324,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn--primary btn-global">@lang('Save')</button>
+                    <button type="submit" class="btn btn-primary btn-global">@lang('Submit')</button>
                 </div>
             </form>
         </div>
