@@ -115,7 +115,6 @@
                     
                 </div>
 
-
                 <div class="row mt-4">
                     <div class="col-12 grid-margin stretch-card">
                         <div class="card card-rounded">
@@ -201,47 +200,51 @@
   }]
 });
 
-
 var depositChart = new CanvasJS.Chart("depositChart", {
     animationEnabled: true,
-    
-    axisY :{
-      valueFormatString: "#0,.",
-      suffix: "k"
+    axisY: {
+        valueFormatString: "#,.",
+        suffix: "",
+        title: "Amount"
     },
     axisX: {
-      title: "Months After Launch"
+        title: "Month"
     },
-    toolTip: {
-      shared: true
-    },
-    data: [{        
-      type: "stackedArea",
-      showInLegend: true,
-      toolTipContent: "<span style=\"color:#4F81BC\"><strong>{name}: </strong></span> {y}",
-      name: "iOS",
-      // Assuming you have the results of the query stored in the variable: $withdrawalsChart
-
-dataPoints: [
-  @foreach($withdrawalsChart['labels'] as $key => $label)
-      { x: {{ $key + 1 }}, y: {{ $withdrawalsChart['values'][$key] }} },
-  @endforeach
- 
-]
-// Assuming you have the results of the query stored in the variables: $depositsChart and $withdrawalsChart
-  },
-    {        
-      type: "stackedArea",  
-      name: "Deposit",
-      toolTipContent: "<span style=\"color:#C0504E\"><strong>{name}: </strong></span> {y}<br><b>Total:<b> #total",
-      showInLegend: true,
-      dataPoints: [
-      @foreach($depositsChart['labels'] as $key => $label)
-          { x: {{ $key + 1 }}, y: {{ $depositsChart['values'][$key] }} },
-      @endforeach
-]
+    data: [{
+        type: "column",
+        dataPoints: [
+            <?php foreach ($depositsChart['labels'] as $index => $label): ?>
+                { label: "<?php echo $label; ?>", y: <?php echo $depositsChart['values'][$index]; ?>, indexLabel: "$<?php echo $depositsChart['values'][$index]; ?>" },
+            <?php endforeach; ?>
+            <?php foreach ($withdrawalsChart['labels'] as $index => $label): ?>
+                { label: "<?php echo $label; ?>", y: <?php echo $withdrawalsChart['values'][$index]; ?>, indexLabel: "-$<?php echo $withdrawalsChart['values'][$index]; ?>", color: "red" },
+            <?php endforeach; ?>
+        ]
     }]
-  });
+});
+var depositChart = new CanvasJS.Chart("depositChart", {
+    animationEnabled: true,
+    axisY: {
+        valueFormatString: "#,.",
+        suffix: "",
+        title: "Amount"
+    },
+    axisX: {
+        title: "Deposit & Withdraw"
+    },
+    data: [{
+        type: "column",
+        dataPoints: [
+            <?php foreach ($depositsChart['labels'] as $index => $label): ?>
+                { label: "<?php echo $label; ?>", y: <?php echo $depositsChart['values'][$index]; ?>, indexLabel: "$<?php echo $depositsChart['values'][$index]; ?>" },
+            <?php endforeach; ?>
+            <?php foreach ($withdrawalsChart['labels'] as $index => $label): ?>
+                { label: "<?php echo $label; ?>", y: <?php echo $withdrawalsChart['values'][$index]; ?>, indexLabel: "-$<?php echo $withdrawalsChart['values'][$index]; ?>", color: "red" },
+            <?php endforeach; ?>
+        ]
+    }]
+});
+
 
   depositChart.render();
   chart.render();

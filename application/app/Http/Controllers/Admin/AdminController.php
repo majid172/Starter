@@ -62,7 +62,7 @@ class AdminController extends Controller
    
         // UserLogin Report Graph
         $userLoginsReport = UserLogin::selectRaw("COUNT(*) as created_at_count, DATE(created_at) as date_name")->orderBy('created_at', 'desc')
-                    ->groupByRaw("DATE(created_at)")->limit(10)
+                    ->groupByRaw("DATE(created_at)")->limit(30)
                     ->pluck('created_at_count', 'date_name');
         $userLogins['labels'] = $userLoginsReport->keys();
         $userLogins['values'] = $userLoginsReport->values();
