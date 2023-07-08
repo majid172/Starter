@@ -114,10 +114,9 @@
         </div>
       </li>
 
+{{-- Configuration --}}
 
-
-
-      <li class="nav-item nav-category">@lang('General settings')</li>
+      <li class="nav-item nav-category">@lang('Basic Configuration')</li>
       <li class="nav-item">
         <a class="nav-link" href="{{route('admin.setting.index')}}">
           <i class="menu-icon mdi mdi-settings"></i>
@@ -132,12 +131,7 @@
         </a>
       </li>
 
-      <li class="nav-item">
-        <a class="nav-link" href="{{route('admin.setting.logo.icon')}}">
-          <i class="menu-icon mdi mdi-arrow-all"></i>
-          <span class="menu-title">@lang('Logo Configure')</span>
-        </a>
-      </li>
+
 
       <li class="nav-item">
         <a class="nav-link" href="{{route('admin.frontend.manage.pages')}}">
@@ -145,5 +139,30 @@
           <span class="menu-title">@lang('Page')</span>
         </a>
       </li>
+
+
+      @php
+        $lastSegment = collect(request()->segments())->last();
+      @endphp
+      <li class="nav-item nav-category">@lang('Section Management')</li>
+      <li class="nav-item">
+        <a class="nav-link" data-bs-toggle="collapse" href="#section" aria-expanded="false" aria-controls="section">
+          <i class="menu-icon mdi mdi-card-text-outline"></i>
+          <span class="menu-title">@lang('Sections')</span>
+          <i class="menu-arrow"></i>
+        </a>
+        <div class="collapse" id="section">
+          <ul class="nav flex-column sub-menu">
+            @foreach(getPageSections(true) as $k => $secs)
+            @if($secs['builder'])
+            <li class="nav-item @if($lastSegment == $k) active @endif "><a class="nav-link" href="{{ route('admin.frontend.sections',$k) }}">{{__($secs['name'])}}</a></li>
+            @endif
+            @endforeach
+           
+          </ul>
+        </div>
+      </li>
+
+     
     </ul>
   </nav>
