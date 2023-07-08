@@ -131,7 +131,19 @@
         </a>
       </li>
 
+      <li class="nav-item {{menuActive(['admin.report.login.history','admin.report.login.ipHistory'])}}">
+        <a href="{{route('admin.report.login.history')}}" class="nav-link">
+            <i class="menu-icon las la-sign-in-alt"></i>
+            <span class="menu-title">@lang('Login Activities')</span>
+        </a>
+      </li>
 
+      <li class="sidebar-menu-item {{menuActive('admin.report.notification.history')}}">
+        <a href="{{route('admin.report.notification.history')}}" class="nav-link">
+            <i class="menu-icon las la-bell"></i>
+            <span class="menu-title">@lang('Notifications')</span>
+        </a>
+    </li>
 
       <li class="nav-item">
         <a class="nav-link" href="{{route('admin.frontend.manage.pages')}}">
