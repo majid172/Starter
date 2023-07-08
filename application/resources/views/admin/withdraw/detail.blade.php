@@ -11,11 +11,12 @@
                     <div class="card-body">
                         <h5 class="card-title border-bottom pb-2">@lang('User Withdraw Information')</h5>
 
-
+                        <div class="row mt-4">
                         @if($details != null)
                         @foreach(json_decode($details) as $val)
-                        <div class="row mt-4">
-                            <div class="col-md-12">
+                        
+                        
+                            <div class="col-md-4">
                                 <h6>{{__($val->name)}}</h6>
                                 @if($val->type == 'checkbox')
                                 {{ implode(',',$val->value) }}
@@ -30,13 +31,13 @@
                                 <p>{{__($val->value)}}</p>
                                 @endif
                             </div>
-                        </div>
+                       
                         @endforeach
                         @endif
 
 
                         @if($withdrawal->status == 2)
-                        <div class="row mt-4">
+                        
                             <div class="col-md-12">
                                 <button class="btn btn-success ms-1 approveBtn" data-id="{{ $withdrawal->id }}"
                                     data-amount="{{ showAmount($withdrawal->final_amount) }} {{$withdrawal->currency}}">
@@ -47,9 +48,9 @@
                                     <i class="fas fa-ban"></i> @lang('Reject')
                                 </button>
                             </div>
-                        </div>
+                      
                         @endif
-
+                        </div>
                     </div>
                 </div>
             </div>
