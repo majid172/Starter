@@ -138,7 +138,7 @@
         </a>
       </li>
 
-      <li class="sidebar-menu-item {{menuActive('admin.report.notification.history')}}">
+      <li class="nav-item {{menuActive('admin.report.notification.history')}}">
         <a href="{{route('admin.report.notification.history')}}" class="nav-link">
             <i class="menu-icon las la-bell"></i>
             <span class="menu-title">@lang('Notifications')</span>

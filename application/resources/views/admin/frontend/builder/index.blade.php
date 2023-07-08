@@ -121,7 +121,7 @@
                                     @if($secs['builder'])
                                     <div class="float-end d-inline-block manage-content">
                                         <a href="{{ route('admin.frontend.sections',$k) }}" target="_blank"
-                                            class="btn bg--primary text-center cog-btn" title="@lang('Manage Content')">
+                                            class="btn bg-primary text-center cog-btn" title="@lang('Manage Content')">
                                             <i class="fa fa-pen p-0 m-0"></i>
                                         </a>
                                     </div>
