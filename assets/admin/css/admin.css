@@ -31192,3 +31192,9 @@ img {
 .user-op{
   list-style: none;
 }
+
+.la, .las {
+    font-family: 'Line Awesome Free';
+    font-weight: 900;
+    font-size: 50px;
+}
