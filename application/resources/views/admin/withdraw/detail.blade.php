@@ -39,7 +39,7 @@
                         @if($withdrawal->status == 2)
                         
                             <div class="col-md-12">
-                                <button class="btn btn-success ms-1 approveBtn" data-id="{{ $withdrawal->id }}"
+                                <button class="btn btn-primary ms-1 approveBtn" data-id="{{ $withdrawal->id }}"
                                     data-amount="{{ showAmount($withdrawal->final_amount) }} {{$withdrawal->currency}}">
                                     <i class="fas la-check"></i> @lang('Approve')
                                 </button>
@@ -152,7 +152,7 @@
                         placeholder="@lang('Provide the details. eg: transaction number')" required></textarea>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn--primary btn-global">@lang('Save')</button>
+                    <button type="submit" class="btn btn-primary btn-global">@lang('Submit')</button>
                 </div>
             </form>
         </div>

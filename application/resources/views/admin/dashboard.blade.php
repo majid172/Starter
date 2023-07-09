@@ -185,13 +185,37 @@
   
   window.onload = function () {
 
-    var chart = new CanvasJS.Chart("loginChart", {
+//     var chart = new CanvasJS.Chart("loginChart", {
+//   animationEnabled: true,
+//   theme: "light2",
+//   title: {},
+//   data: [{
+//     type: "line",
+//     indexLabelFontSize: 12,
+//     dataPoints: [
+//       @foreach($userLogins['values'] as $key => $value)
+//         { y: {{ $value }}, indexLabel: "{{ $userLogins['labels'][$key] }}" },
+//       @endforeach
+//     ]
+//   }]
+// });
+
+
+var chart = new CanvasJS.Chart("loginChart", {
   animationEnabled: true,
-  theme: "light2",
-  title: {},
+  axisY: {
+    title: "Login Date",
+    valueFormatString: "#0,,.",
+    
+    stripLines: [{
+      value: {{ $userLogins['values']->max() }}, // Set the maximum dynamically
+      label: "Average"
+    }]
+  },
   data: [{
-    type: "line",
-    indexLabelFontSize: 12,
+    yValueFormatString: "#,### Units",
+    xValueFormatString: "YYY",
+    type: "spline",
     dataPoints: [
       @foreach($userLogins['values'] as $key => $value)
         { y: {{ $value }}, indexLabel: "{{ $userLogins['labels'][$key] }}" },
@@ -199,29 +223,9 @@
     ]
   }]
 });
+chart.render();
 
-var depositChart = new CanvasJS.Chart("depositChart", {
-    animationEnabled: true,
-    axisY: {
-        valueFormatString: "#,.",
-        suffix: "",
-        title: "Amount"
-    },
-    axisX: {
-        title: "Month"
-    },
-    data: [{
-        type: "column",
-        dataPoints: [
-            <?php foreach ($depositsChart['labels'] as $index => $label): ?>
-                { label: "<?php echo $label; ?>", y: <?php echo $depositsChart['values'][$index]; ?>, indexLabel: "$<?php echo $depositsChart['values'][$index]; ?>" },
-            <?php endforeach; ?>
-            <?php foreach ($withdrawalsChart['labels'] as $index => $label): ?>
-                { label: "<?php echo $label; ?>", y: <?php echo $withdrawalsChart['values'][$index]; ?>, indexLabel: "-$<?php echo $withdrawalsChart['values'][$index]; ?>", color: "red" },
-            <?php endforeach; ?>
-        ]
-    }]
-});
+
 var depositChart = new CanvasJS.Chart("depositChart", {
     animationEnabled: true,
     axisY: {
@@ -239,7 +243,7 @@ var depositChart = new CanvasJS.Chart("depositChart", {
                 { label: "<?php echo $label; ?>", y: <?php echo $depositsChart['values'][$index]; ?>, indexLabel: "$<?php echo $depositsChart['values'][$index]; ?>" },
             <?php endforeach; ?>
             <?php foreach ($withdrawalsChart['labels'] as $index => $label): ?>
-                { label: "<?php echo $label; ?>", y: <?php echo $withdrawalsChart['values'][$index]; ?>, indexLabel: "-$<?php echo $withdrawalsChart['values'][$index]; ?>", color: "red" },
+                { label: "<?php echo $label; ?>", y: <?php echo $withdrawalsChart['values'][$index]; ?>, indexLabel: "$<?php echo $withdrawalsChart['values'][$index]; ?>", color: "#FA9F8C" },
             <?php endforeach; ?>
         ]
     }]
