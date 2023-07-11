@@ -86,7 +86,7 @@
     
       <div class="row mt-4">
         <div class="col-lg-6 d-flex flex-column">
-            <div class="card">
+            <div class="card mb-4">
                 <div class="card-body">
                     <div class="d-sm-flex justify-content-between align-items-start">
                       <div>
@@ -121,8 +121,8 @@
       </div>
 
       <div class="row mt-4">
-          <div class="col-7 grid-margin stretch-card">
-              <div class="card card-rounded">
+          <div class="col-lg-7 grid-margin stretch-card ">
+              <div class="card card-rounded ">
                   <div class="card-body">
                   <div class="d-sm-flex justify-content-between align-items-start">
                       <div>
@@ -272,7 +272,8 @@ var loginHistory = new CanvasJS.Chart("loginHistory", {
     data: [{
         type: "doughnut",
         startAngle: 20,
-        //innerRadius: 60,
+        
+        // innerRadius: 60,
         indexLabelFontSize: 17,
         indexLabel: "{label} - #percent%",
         toolTipContent: "<b>{label}:</b> {y} (#percent%)",
