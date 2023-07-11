@@ -95,10 +95,7 @@
                       </div>
                      
                     </div>
-                   
-
                     <div id="loginChart"style="height: 300px; width: 100%;"></div>
-
                 </div>
             </div>
         </div>
@@ -124,7 +121,7 @@
       </div>
 
       <div class="row mt-4">
-          <div class="col-8 grid-margin stretch-card">
+          <div class="col-7 grid-margin stretch-card">
               <div class="card card-rounded">
                   <div class="card-body">
                   <div class="d-sm-flex justify-content-between align-items-start">
@@ -177,9 +174,19 @@
               </div>
           </div>
 
-          <div class="col-lg-4">
+          <div class="col-lg-5">
             <div class="card">
-                <div id="loginHistory" style="height: 300px; width: 100%;"></div>
+                <div class="card-body">
+                    <div class="d-sm-flex justify-content-between align-items-start">
+                      <div>
+                        <h4 class="card-title card-title-dash">@lang('User Login Browser')</h4>
+                      
+                      </div>
+                     
+                    </div>
+                    <div id="loginHistory" style="height: 300px; width: 100%;"></div>
+                </div>
+                
             </div>
           </div>
       </div>
@@ -258,28 +265,23 @@ var depositChart = new CanvasJS.Chart("depositChart", {
 
 // pie chart for userlogin browser
 var loginHistory = new CanvasJS.Chart("loginHistory", {
-	animationEnabled: true,
-	title:{
-		text: "Login History",
-		horizontalAlign: "left"
-	},
-	data: [{
-		type: "doughnut",
-		startAngle: 60,
-		//innerRadius: 60,
-		indexLabelFontSize: 17,
-		indexLabel: "{label} - #percent%",
-		toolTipContent: "<b>{label}:</b> {y} (#percent%)",
-		dataPoints: [
-			{ y: 67, label: "Inbox" },
-			{ y: 28, label: "Archives" },
-			{ y: 10, label: "Labels" },
-			{ y: 7, label: "Drafts"},
-			{ y: 15, label: "Trash"},
-			{ y: 6, label: "Spam"}
-		]
-	}]
+    animationEnabled: true,
+    title: {
+        horizontalAlign: "left"
+    },
+    data: [{
+        type: "doughnut",
+        startAngle: 20,
+        //innerRadius: 60,
+        indexLabelFontSize: 17,
+        indexLabel: "{label} - #percent%",
+        toolTipContent: "<b>{label}:</b> {y} (#percent%)",
+        dataPoints: <?php echo json_encode($dataPoints); ?>
+    }]
 });
+
+loginHistory.render();
+
 chart.render();
 
   depositChart.render();
