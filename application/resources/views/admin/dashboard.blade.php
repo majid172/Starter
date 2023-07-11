@@ -179,7 +179,7 @@
 
           <div class="col-lg-4">
             <div class="card">
-
+                <div id="loginHistory" style="height: 300px; width: 100%;"></div>
             </div>
           </div>
       </div>
@@ -256,10 +256,34 @@ var depositChart = new CanvasJS.Chart("depositChart", {
     }]
 });
 
+// pie chart for userlogin browser
+var loginHistory = new CanvasJS.Chart("loginHistory", {
+	animationEnabled: true,
+	title:{
+		text: "Login History",
+		horizontalAlign: "left"
+	},
+	data: [{
+		type: "doughnut",
+		startAngle: 60,
+		//innerRadius: 60,
+		indexLabelFontSize: 17,
+		indexLabel: "{label} - #percent%",
+		toolTipContent: "<b>{label}:</b> {y} (#percent%)",
+		dataPoints: [
+			{ y: 67, label: "Inbox" },
+			{ y: 28, label: "Archives" },
+			{ y: 10, label: "Labels" },
+			{ y: 7, label: "Drafts"},
+			{ y: 15, label: "Trash"},
+			{ y: 6, label: "Spam"}
+		]
+	}]
+});
+chart.render();
 
   depositChart.render();
-  chart.render();
-
+  loginHistory.render();
 
 }
 </script>
