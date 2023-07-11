@@ -31196,5 +31196,21 @@ img {
 .la, .las {
     font-family: 'Line Awesome Free';
     font-weight: 900;
-    font-size: 50px;
+    font-size: 45px;
+}
+
+.form-check {
+  position: relative;
+  display: block;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding-left: 45px;
+}
+
+.form-check .form-check-label {
+    min-height: 18px;
+    display: block;
+    margin-left: 0.6rem;
+    font-size: 0.812rem;
+    line-height: 1.5;
 }

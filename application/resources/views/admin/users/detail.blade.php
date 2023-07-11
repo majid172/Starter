@@ -83,9 +83,9 @@
             </div>
            
         </div>
-        <div class="row">
+        <div class="row mb-4">
             <div class="col-xl-9">
-                <div class="card">
+                <div class="card mb-4">
            
                     <div class="card-header">
                         <h5 class="card-title mb-0">@lang('Information of') {{$user->fullname}}</h5>
@@ -94,40 +94,7 @@
                         <form action="{{route('admin.users.update',[$user->id])}}" method="POST"
                             enctype="multipart/form-data">
                             @csrf
-                            <div class="row">
-                                <div class="form-group  col-xl-3 col-md-6 col-12">
-                                    <label>@lang('Email Verification') </label>
-                                    <label class="switch m-0">
-                                        <input type="checkbox" class="toggle-switch" name="ev" {{ $user->ev ?
-                                        'checked' : null }}>
-                                        <span class="slider round"></span>
-                                    </label>
-                                </div>
-                                <div class="form-group  col-xl-3 col-md-6 col-12">
-                                    <label>@lang('Mobile Verification') </label>
-                                    <label class="switch m-0">
-                                        <input type="checkbox" class="toggle-switch" name="sv" {{ $user->sv ?
-                                        'checked' : null }}>
-                                        <span class="slider round"></span>
-                                    </label>
-                                </div>
-                                <div class="form-group  col-xl-3 col-md-6 col-12">
-                                    <label>@lang('2FA Verification') </label>
-                                    <label class="switch m-0">
-                                        <input type="checkbox" class="toggle-switch" name="ts" {{ $user->ts ?
-                                        'checked' : null }}>
-                                        <span class="slider round"></span>
-                                    </label>
-                                </div>
-                                <div class="form-group  col-xl-3 col-md-6 col-12">
-                                    <label>@lang('KYC') </label>
-                                    <label class="switch m-0">
-                                        <input type="checkbox" class="toggle-switch" name="kv" {{ $user->kv ?
-                                        'checked' : null }}>
-                                        <span class="slider round"></span>
-                                    </label>
-                                </div>
-                            </div>
+
 
                             <div class="row mt-2">
                                 <div class="col-md-6">
@@ -214,6 +181,38 @@
                                     </div>
                                 </div>
                             </div>
+
+                            <div class="row">
+                                <div class="form-group  col-xl-4 col-md-6 col-12">
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" name="ev" {{ $user->ev ?
+                                            'checked' : null }}>
+                                        <label class="form-check-label switch" for="flexSwitchCheckDefault">@lang('Email Verification')</label>
+                                      </div>
+                                    
+                                   
+                                </div>
+                                <div class="form-group  col-xl-4 col-md-6 col-12">
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" role="switch" name="sv" {{$user->sv ? 'checked' : null}} id="flexSwitchCheckDefault">
+                                        <label class="form-check-label" for="flexSwitchCheckDefault">@lang('Mobile Verification')</label>
+                                      </div>
+                                    
+                                   
+                                </div>
+                                <div class="form-group  col-xl-4 col-md-6 col-12">
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" role="switch" name="ts" {{ $user->ts ?
+                                            'checked' : null }}id="flexSwitchCheckDefault">
+                                        <label class="form-check-label" for="flexSwitchCheckDefault">@lang('TwoFA')</label>
+                                      </div>
+                                    
+                                 
+                                </div>
+                                
+                            </div>
+
+
                             <div class="row mt-4">
                                 <div class="col-md-12">
                                     <div class="form-group mb-0">
@@ -222,10 +221,13 @@
                                     </div>
                                 </div>
                             </div>
+
+                            
                         </form>
                     </div>
                 </div>
             </div>
+
             <div class="col-xl-3">
                 <div class="card ">
                     <div class="card-header">

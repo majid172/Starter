@@ -33,7 +33,7 @@
     <link rel="stylesheet" href="{{asset('assets/admin/css/select2.min.css')}}">
     <link rel="stylesheet" href="{{asset('assets/admin/css/admin.css')}}">
     <link rel="stylesheet" href="{{asset('assets/admin/css/custom-style.css')}}">
-
+   
 
     @stack('style')
 </head>
