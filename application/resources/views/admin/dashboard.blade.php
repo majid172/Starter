@@ -177,7 +177,7 @@
               </div>
           </div>
 
-          <div class="col-lg-8">
+          <div class="col-lg-4">
             <div class="card">
 
             </div>
@@ -189,7 +189,7 @@
 @endsection
 
 @push('script')
-<script src="https://cdn.canvasjs.com/canvasjs.min.js"></script>
+{{-- <script src="https://cdn.canvasjs.com/canvasjs.min.js"></script> --}}
 {{-- login line char --}}
 <script>
   

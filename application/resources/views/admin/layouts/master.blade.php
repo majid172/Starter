@@ -54,7 +54,7 @@
 
     {{-- only js folder --}}
     <script src="{{asset('assets/js/off-canvas.js')}}"></script>
-    <script src="{{asset('assets/js/canvas.js')}}"></script>
+    <script src="{{asset('assets/admin/js/canvas.min.js')}}"></script>
 
     <script src="{{asset('assets/js/hoverable-collapse.js')}}"></script>
     <script src="{{asset('assets/js/template.js')}}"></script>
