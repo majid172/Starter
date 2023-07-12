@@ -149,7 +149,9 @@ function strLimit($title = null, $length = 10)
 
 function getIpInfo()
 {
+    
     $ipInfo = ClientInfo::ipInfo();
+   
     return $ipInfo;
 }
 
@@ -386,31 +388,28 @@ function showEmailAddress($email)
 
 function getRealIP()
 {
-    $ip = $_SERVER["REMOTE_ADDR"];
-    //Deep detect ip
-    if (filter_var(@$_SERVER['HTTP_FORWARDED'], FILTER_VALIDATE_IP)) {
-        $ip = $_SERVER['HTTP_FORWARDED'];
+    if (isset($_SERVER["REMOTE_ADDR"])) {
+        $ip = $_SERVER["REMOTE_ADDR"];
     }
-    if (filter_var(@$_SERVER['HTTP_FORWARDED_FOR'], FILTER_VALIDATE_IP)) {
-        $ip = $_SERVER['HTTP_FORWARDED_FOR'];
+    // Check for additional headers that might contain the IP address
+    elseif (isset($_SERVER["HTTP_X_FORWARDED_FOR"])) {
+        $ip = $_SERVER["HTTP_X_FORWARDED_FOR"];
     }
-    if (filter_var(@$_SERVER['HTTP_X_FORWARDED_FOR'], FILTER_VALIDATE_IP)) {
-        $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
-    }
-    if (filter_var(@$_SERVER['HTTP_CLIENT_IP'], FILTER_VALIDATE_IP)) {
-        $ip = $_SERVER['HTTP_CLIENT_IP'];
-    }
-    if (filter_var(@$_SERVER['HTTP_X_REAL_IP'], FILTER_VALIDATE_IP)) {
-        $ip = $_SERVER['HTTP_X_REAL_IP'];
-    }
-    if (filter_var(@$_SERVER['HTTP_CF_CONNECTING_IP'], FILTER_VALIDATE_IP)) {
-        $ip = $_SERVER['HTTP_CF_CONNECTING_IP'];
+    elseif (isset($_SERVER["HTTP_CLIENT_IP"])) {
+        $ip = $_SERVER["HTTP_CLIENT_IP"];
     }
     if ($ip == '::1') {
         $ip = '127.0.0.1';
     }
+    else {
+        // If the IP address is not found, return a default value or handle the error as needed
+        $ip = "Unknown";
+    }
 
     return $ip;
+    
+
+    // return $ip;
 }
 
 
