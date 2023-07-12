@@ -188,7 +188,7 @@
                                         <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" name="ev" {{ $user->ev ?
                                             'checked' : null }}>
                                         <label class="form-check-label switch" for="flexSwitchCheckDefault">@lang('Email Verification')</label>
-                                      </div>
+                                    </div>
                                     
                                    
                                 </div>
@@ -196,7 +196,7 @@
                                     <div class="form-check form-switch">
                                         <input class="form-check-input" type="checkbox" role="switch" name="sv" {{$user->sv ? 'checked' : null}} id="flexSwitchCheckDefault">
                                         <label class="form-check-label" for="flexSwitchCheckDefault">@lang('Mobile Verification')</label>
-                                      </div>
+                                    </div>
                                     
                                    
                                 </div>
@@ -205,9 +205,8 @@
                                         <input class="form-check-input" type="checkbox" role="switch" name="ts" {{ $user->ts ?
                                             'checked' : null }}id="flexSwitchCheckDefault">
                                         <label class="form-check-label" for="flexSwitchCheckDefault">@lang('TwoFA')</label>
-                                      </div>
+                                    </div>
                                     
-                                 
                                 </div>
                                 
                             </div>

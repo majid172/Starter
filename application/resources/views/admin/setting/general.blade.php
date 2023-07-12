@@ -158,14 +158,14 @@
                 @csrf
                 
                 <div class="row">
-                    <div class="col-4">
+                    <div class="col-md-4">
                         <div class="form-group">
                             <label for="exampleInputUsername1">@lang('Site Title')</label>
                             <input type="text" name="site_name" value="{{$general->site_name}}" class="form-control" id="exampleInputUsername1" placeholder="Username">
                         </div>
                     </div>
 
-                    <div class="col-4">
+                    <div class="col-md-4">
                         <div class="form-group">
                             <label for="exampleInputPassword1">@lang('Site Color')</label>
                             <input type="text" name="base_color" value="{{ $general->base_color }}" class="form-control" id="exampleInputPassword1" placeholder="currency text">
@@ -173,7 +173,7 @@
           
                     </div>
 
-                    <div class="col-4">
+                    <div class="col-md-4">
                         <div class="form-group">
                             <label for="exampleInputPassword1">@lang('Site Secondary Color')</label>
                             <input type="text" name="secondary_color" value="{{ $general->secondary_color }}"  class="form-control" id="exampleInputPassword1" placeholder="currency text">
@@ -215,36 +215,39 @@
 
                 <div class="row">
                     
-                    <div class="col-md-3">
-                        <div class="form-group">
-                            <label for="">@lang('Email Verification')</label>
-                            <input type="checkbox" class="toggle-switch" name="ev" {{ $general->ev ?
-                                'checked' : null }}>
-                          </div>
+                    <div class="col-sm-3">
+                          <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" role="switch" name="ev" {{ $general->ev ?
+                                'checked' : null }} id="flexSwitchCheckDefault">
+                            <label class="form-check-label" for="flexSwitchCheckDefault">@lang('Email Verification')</label>
+                        </div>
                     </div>
-                    <div class="col-md-3">
-                        <div class="form-group">
-                            <label for="">@lang('Email Notification')</label>
-                            <input type="checkbox" class="toggle-switch" name="en" {{ $general->en ?
-                                'checked' : null }}>
-                          </div>
+                    <div class="col-sm-3">
+                        
+                          <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" role="switch" name="en" {{ $general->en ?
+                                'checked' : null }} id="flexSwitchCheckDefault">
+                            <label class="form-check-label" for="flexSwitchCheckDefault">@lang('Email Notification')</label>
+                        </div>
                     </div>
                     
-                    <div class="col-md-3">
-                        <div class="form-group">
-                            <label for="">@lang('User Registration')</label>
-                            <input type="checkbox" class="toggle-switch" name="registration" {{
-                                $general->registration ?
-                            'checked' : null }}>
-                          </div>
+                    <div class="col-sm-3">
+                       
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" role="switch" name="registration" {{ $general->registration ?
+                                'checked' : null }}id="flexSwitchCheckDefault">
+                            <label class="form-check-label" for="flexSwitchCheckDefault">@lang('User Registration')</label>
+                        </div>
+                        
                     </div>
 
-                    <div class="col-md-3">
-                        <div class="form-group">
-                            <label for="">@lang('Terms & Condition')</label>
-                            <input type="checkbox" class="toggle-switch" name="agree" {{ $general->agree ?
-                                'checked' : null }}>
-                          </div>
+                    <div class="col-sm-3">
+                        
+                          <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" role="switch" name="agree" {{ $general->agree ?
+                                'checked' : null }}id="flexSwitchCheckDefault">
+                            <label class="form-check-label" for="flexSwitchCheckDefault">@lang('ToC')</label>
+                        </div>
                     </div>
 
                     
