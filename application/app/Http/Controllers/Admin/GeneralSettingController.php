@@ -35,6 +35,7 @@ class GeneralSettingController extends Controller
         $general->cur_sym = $request->cur_sym;
         $general->base_color = $request->base_color;
         $general->secondary_color = $request->secondary_color;
+        $general->paginate_no = $request->paginate_no;
         $general->kv = $request->kv ? 1 : 0;
         $general->ev = $request->ev ? 1 : 0;
         $general->en = $request->en ? 1 : 0;

@@ -182,7 +182,7 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-4">
+                    <div class="col-md-3">
                         <div class="form-group">
                             <label for="exampleInputPassword1">@lang('Time Zone')</label>
                             <select class="form-control" name="timezone">
@@ -192,16 +192,23 @@
                               </select>
                           </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <div class="form-group">
                             <label for="exampleInputEmail1">@lang('Currency Symbol')</label>
                             <input type="text" name="cur_sym" value="{{$general->cur_sym}}" class="form-control" id="exampleInputEmail1" placeholder="Email">
                           </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <div class="form-group">
                             <label for="exampleInputPassword1">@lang('Currency Text')</label>
                             <input type="text" name="cur_text" value="{{__($general->cur_text)}}" class="form-control" id="exampleInputPassword1" placeholder="currency text">
+                          </div>
+                    </div>
+                    
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">@lang('Number of Pagination')</label>
+                            <input type="number" name="paginate_no" value="{{__($general->paginate_no)}}" class="form-control" id="exampleInputPassword1" placeholder="Pagination number">
                           </div>
                     </div>
                 </div>
