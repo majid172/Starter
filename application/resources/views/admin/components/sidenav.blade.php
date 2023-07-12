@@ -145,6 +145,14 @@
         </a>
     </li>
 
+
+
+
+      @php
+        $lastSegment = collect(request()->segments())->last();
+      @endphp
+      <li class="nav-item nav-category">@lang('Section Management')</li>
+      
       <li class="nav-item">
         <a class="nav-link" href="{{route('admin.frontend.manage.pages')}}">
           <i class="menu-icon mdi mdi-file-document"></i>
@@ -152,11 +160,6 @@
         </a>
       </li>
 
-
-      @php
-        $lastSegment = collect(request()->segments())->last();
-      @endphp
-      <li class="nav-item nav-category">@lang('Section Management')</li>
       <li class="nav-item">
         <a class="nav-link" data-bs-toggle="collapse" href="#section" aria-expanded="false" aria-controls="section">
           <i class="menu-icon mdi mdi-card-text-outline"></i>
