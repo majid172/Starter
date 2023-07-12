@@ -230,8 +230,10 @@ function getColumnName($user)
     return strtolower(end($array)) . '_id';
 }
 
-function getPaginate($paginate = 20)
+function getPaginate($paginate = null)
 {
+    $general = GeneralSetting::first();
+    $paginate = $paginate ?? $general->paginate_no ?? 10;
     return $paginate;
 }
 
