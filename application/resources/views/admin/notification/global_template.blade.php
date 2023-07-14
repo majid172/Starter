@@ -3,7 +3,7 @@
 <div class="main-panel">
     <div class="content-wrapper">
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-6 mb-3">
                 <div class="card overflow-hidden">
                     <h6 class="p-3">@lang('Subject wise short-code')</h6>
                     <div class="card-body p-0">
@@ -35,7 +35,7 @@
                 </div>
             </div>
 
-            <div class="col-md-6">
+            <div class="col-md-6 ">
                
                 <div class="card overflow-hidden">
                     <h6 class="p-3">@lang('Site Short Codes')</h6>
