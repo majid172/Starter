@@ -146,6 +146,25 @@
     </li>
 
 
+  {{-- email notification --}}
+  <li class="nav-item nav-category">@lang('Email Notification')</li>
+  <li class="nav-item">
+    <a class="nav-link" data-bs-toggle="collapse" href="#email" aria-expanded="false" aria-controls="email">
+      <i class="menu-icon mdi mdi-card-text-outline"></i>
+      <span class="menu-title">@lang('Email & Notification')</span>
+      <i class="menu-arrow"></i>
+    </a>
+    <div class="collapse" id="email">
+      <ul class="nav flex-column sub-menu">
+        <li class="nav-item"><a class="nav-link" href="{{route('admin.setting.notification.templates')}}">@lang('Templates')</a></li>
+
+        <li class="nav-item"><a class="nav-link" href="{{route('admin.setting.notification.global')}}">@lang('Common Template')</a></li>
+        
+        <li class="nav-item"><a class="nav-link" href="{{route('admin.setting.notification.email')}}">@lang('Email config')</a></li>
+       
+      </ul>
+    </div>
+  </li>
 
 
       @php
