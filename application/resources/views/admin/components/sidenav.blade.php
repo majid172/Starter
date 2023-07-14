@@ -170,7 +170,7 @@
       @php
         $lastSegment = collect(request()->segments())->last();
       @endphp
-      <li class="nav-item nav-category">@lang('Section Management')</li>
+      <li class="nav-item nav-category">@lang('Page & Content ')</li>
       
       <li class="nav-item">
         <a class="nav-link" href="{{route('admin.frontend.manage.pages')}}">
@@ -182,7 +182,7 @@
       <li class="nav-item">
         <a class="nav-link" data-bs-toggle="collapse" href="#section" aria-expanded="false" aria-controls="section">
           <i class="menu-icon mdi mdi-card-text-outline"></i>
-          <span class="menu-title">@lang('Sections')</span>
+          <span class="menu-title">@lang('Contents')</span>
           <i class="menu-arrow"></i>
         </a>
         <div class="collapse" id="section">

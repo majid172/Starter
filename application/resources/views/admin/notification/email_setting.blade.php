@@ -2,7 +2,14 @@
 @section('panel')
 
 <div class="main-panel">
-    <div class="connet-wrapper">
+    <div class="content-wrapper">
+        <button type="button" data-bs-target="#exampleModal" data-bs-toggle="modal" class="btn btn-sm btn-primary mb-3">@lang('Test
+            Mail')</button>
+            {{-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                @lang('Email testing')
+              </button> --}}
+
+
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
@@ -63,8 +70,9 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <button type="submit" class="btn btn-primary btn-global mr-4">@lang('Submit')</button>
+                  
+                        <div class="form-group mr-4 p-3 text-end">
+                            <button type="submit" class="btn btn-primary btn-global ">@lang('Submit')</button>
                         </div>
                     </form>
                 </div><!-- card end -->
@@ -72,10 +80,45 @@
         
         
         </div>
+       
         
+      
+
+        {{-- test  --}}
+
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog ">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">@lang('Email testing')</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <form action="{{ route('admin.setting.notification.email.test') }}" method="POST">
+                    @csrf
+                    <input type="hidden" name="id">
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label>@lang('Sent to') </label>
+                                    <input type="text" name="email" class="form-control"
+                                        placeholder="@lang('Email Address')">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-primary">@lang('Send')</button>
+                    </div>
+              </div>
+            </div>
+          </div>
+     
+
         
         {{-- TEST MAIL MODAL --}}
-        <div id="testMailModal" class="modal fade" tabindex="-1" role="dialog">
+        {{-- <div id="testMailModal" class="modal fade" tabindex="-1" role="dialog">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -98,16 +141,18 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="">
+                        
+                        <div class="form-group">
                             <button type="submit" class="btn btn-primary btn-global">@lang('Send')</button>
                         </div>
                     </form>
                 </div>
             </div>
-        </div>
+        </div> --}}
+            
+        
     </div>
 </div>
-
 
 @endsection
 @push('breadcrumb-plugins')
