@@ -23,8 +23,8 @@
                                         <td>
                                             <a title="@lang('Edit')"
                                                 href="{{ route('admin.setting.notification.template.edit', $template->id) }}"
-                                                class="btn btn-sm btn--primary ms-1 editGatewayBtn">
-                                                <i class="la la-pencil"></i>
+                                                class="btn btn-sm btn-primary ms-1 editGatewayBtn">
+                                                <i class="las la-edit"></i>
                                             </a>
                                         </td>
                                     </tr>
