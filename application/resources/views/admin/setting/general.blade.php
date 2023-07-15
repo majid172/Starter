@@ -154,7 +154,7 @@
               <p class="card-description">
                 @lang('Basic configuration of your website')
               </p>
-              <form class="forms-sample" method="POST" action="">
+              <form class="forms-sample" method="POST" action="{{route('admin.setting.update')}}">
                 @csrf
                 
                 <div class="row">
@@ -185,12 +185,15 @@
                     <div class="col-md-3">
                         <div class="form-group">
                             <label for="exampleInputPassword1">@lang('Time Zone')</label>
-                            <select class="form-control" name="timezone">
+                            <select class="form-control select2-basic" name="timezone" >
                               @foreach($timezones as $timezone)
-                              <option value="'{{ @$timezone }}'">{{ __($timezone) }}</option>
+                                <option value="'{{ @$timezone }}'">{{ __($timezone) }}</option>
                               @endforeach
-                              </select>
-                          </div>
+                            </select>
+
+
+
+                        </div>
                     </div>
                     <div class="col-md-3">
                         <div class="form-group">
@@ -261,6 +264,9 @@
         </div>
         
       </div>
+
+
+      {{-- logo & favicon --}}
       <div class="row">
         <div class="col-md-12 grid-margin stretch-card">
           <div class="card">
@@ -269,7 +275,7 @@
               <p class="card-description">
                 @lang('Basic configuration of your website')
               </p>
-              <form class="forms-sample" method="POST" action="">
+              <form class="forms-sample" method="POST" action="{{route('admin.setting.logo.icon')}}" enctype="multipart/form-data">
                 @csrf
                 <div class="row">
                     <div class="col-lg-6 col-sm-12 mb-2">
@@ -277,6 +283,7 @@
                         <img src=" {{ getImage(getFilePath('logoIcon').'/logo.png', '?'
                         .time()) }}" alt="{{config('app.name')}}" class="logo">
                     </div>
+
                     <div class="col-lg-6 col-sm-12 mb-2">
                         <input type="file" accept=".png, .jpg, .jpeg"  name="favicon"
                                     class="file-upload-field form-control" />

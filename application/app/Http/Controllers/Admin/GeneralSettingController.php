@@ -26,7 +26,7 @@ class GeneralSettingController extends Controller
             'cur_sym' => 'required|string|max:40',
             'base_color' => 'nullable', 'regex:/^[a-f0-9]{6}$/i',
             'secondary_color' => 'nullable', 'regex:/^[a-f0-9]{6}$/i',
-            'timezone' => 'required',
+            // 'timezone' => 'required',
         ]);
 
         $general = GeneralSetting::first();
@@ -49,7 +49,7 @@ class GeneralSettingController extends Controller
 
         $timezoneFile = config_path('timezone.php');
      
-        $content = '<?php $timezone = '.$request->timezone.' ?>';
+        $content = '<?php $timezone = '.$request->timezone.'?>';
         
         file_put_contents($timezoneFile, $content);
         $notify[] = ['success', 'General Settings has been updated successfully'];
@@ -82,6 +82,7 @@ class GeneralSettingController extends Controller
         }
 
         if ($request->hasFile('favicon')) {
+          
             try {
                 $path = getFilePath('logoIcon');
                 if (!file_exists($path)) {
