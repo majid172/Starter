@@ -41,7 +41,7 @@ function getNumber($length = 8)
 
 function systemDetails()
 {
-    $system['name'] = 'minstack';
+    $system['name'] = 'starterkit';
     $system['version'] = '10.0.0';
     $system['build_version'] = '10.0.3';
     return $system;
@@ -85,13 +85,14 @@ function loadExtension($key)
 }
 
 function getTrx($length = 12)
-{
-    $characters = 'ABCDEFGHJKMNOPQRSTUVWXYZ123456789';
-    $charactersLength = strlen($characters);
+{   
+    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
     $randomString = '';
+
     for ($i = 0; $i < $length; $i++) {
-        $randomString .= $characters[rand(0, $charactersLength - 1)];
+        $randomString .= $characters[rand(0, strlen($characters) - 1)];
     }
+
     return $randomString;
 }
 

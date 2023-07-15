@@ -192,7 +192,7 @@ Route::middleware('admin')->group(function () {
         Route::post('setting/system-configuration','systemConfigurationSubmit');
 
         // Logo-Icon
-        Route::get('setting/logo', 'logoIcon')->name('setting.logo.icon');
+        // Route::get('setting/logo', 'logoIcon')->name('setting.logo.icon');
         Route::post('setting/logo', 'logoIconUpdate')->name('setting.logo.icon');
 
         //Cookie

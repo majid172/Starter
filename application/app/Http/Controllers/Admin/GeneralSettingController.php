@@ -56,11 +56,11 @@ class GeneralSettingController extends Controller
         return back()->withNotify($notify);
     }
 
-    public function logoIcon()
-    {
-        $pageTitle = 'Logo & Favicon';
-        return view('admin.setting.logo_icon', compact('pageTitle'));
-    }
+    // public function logoIcon()
+    // {
+    //     $pageTitle = 'Logo & Favicon';
+    //     return view('admin.setting.logo_icon', compact('pageTitle'));
+    // }
 
     public function logoIconUpdate(Request $request)
     {
