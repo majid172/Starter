@@ -52,8 +52,8 @@ function activeTemplate($asset = false)
     $general = gs();
     $template = $general->active_template;
     if ($asset)
-    return 'assets/presets/' . $template . '/';
-    return 'presets.' . $template . '.';
+    return 'assets/theme/' . $template . '/';
+    return 'theme.' . $template . '.';
 }
 
 function activeTemplateName()
@@ -164,18 +164,18 @@ function osBrowser()
 }
 
 
-function getTemplates()
-{
-    $param['purchasecode'] = env("PURCHASECODE");
-    $param['website'] = @$_SERVER['HTTP_HOST'] . @$_SERVER['REQUEST_URI'] . ' - ' . env("APP_URL");
-    $url = 'https://license.wstacks.com/updates/templates/' . systemDetails()['name'];
-    $response = CurlRequest::curlPostContent($url, $param);
-    if ($response) {
-        return $response;
-    } else {
-        return null;
-    }
-}
+// function getTemplates()
+// {
+//     $param['purchasecode'] = env("PURCHASECODE");
+//     $param['website'] = @$_SERVER['HTTP_HOST'] . @$_SERVER['REQUEST_URI'] . ' - ' . env("APP_URL");
+//     $url = 'https://license.wstacks.com/updates/templates/' . systemDetails()['name'];
+//     $response = CurlRequest::curlPostContent($url, $param);
+//     if ($response) {
+//         return $response;
+//     } else {
+//         return null;
+//     }
+// }
 
 
 function getPageSections($arr = false)
