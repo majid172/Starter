@@ -27,7 +27,7 @@
     {{-- css --}}
     {{-- <link rel="stylesheet" href="{{asset('assets/css/vertical-layout-light/style.css')}}"> --}}
     <!-- endinject -->
-    <link rel="shortcut icon" href="{{asset('assets/images/favicon.png')}}" />
+
     @stack('style-lib')
 
     <link rel="stylesheet" href="{{asset('assets/admin/css/select2.min.css')}}">

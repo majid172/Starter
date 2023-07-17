@@ -111,7 +111,7 @@
 
 
           <li class="nav-item dropdown"> 
-            <a class="nav-link count-indicator" id="countDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
+            <a class="nav-link count-indicator" id="countDropdown" href="{{ route('admin.notifications') }}" data-bs-toggle="dropdown" aria-expanded="false">
               <i class="icon-bell"></i>
               <span class="count"></span>
             </a>
