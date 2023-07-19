@@ -130,7 +130,7 @@
                   
                       </div>
                       <div>
-                          <a href="{{route('admin.ticket.pending')}}" class="btn btn-primary btn-lg text-white mb-0 me-0" type="button"><i class="mdi mdi-account-card-details"></i>@lang('See all')</a>
+                          <a href="{{route('admin.ticket.pending')}}" class="btn btn-primary btn-rounded" type="button"><i class="mdi mdi-account-card-details"></i>@lang('See all')</a>
                       </div>
                   </div>
                   <div class="table-responsive  mt-1">
