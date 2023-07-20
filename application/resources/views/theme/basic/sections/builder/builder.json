@@ -1,11 +1,18 @@
 {
     "banner": {
         "builder": true,
-        "no_selection":true,
+       
         "name": "Banner Section",
         "content": {
             "heading": "text",
-            "subheading": "text"
+            "subheading": "text",
+            "paragraph":"text",
+            "button":"text",
+            "images":{
+                "background_image":{
+                    "size":"750x450"
+                }
+            }
         }
     },
     "feature": {

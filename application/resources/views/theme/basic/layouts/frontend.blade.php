@@ -11,9 +11,17 @@
 
     <link href="{{ asset('assets/common/css/all.min.css') }}" rel="stylesheet">
 
-    <link rel="stylesheet" href="{{asset('assets/common/css/line-awesome.min.css')}}"/>
+    <link rel="stylesheet" href="{{asset('assets/common/css/line-awesome.min.css')}}">
 
     <link rel="stylesheet" href="{{asset($activeTemplateTrue.'css/custom.css')}}">
+
+    <link rel="stylesheet" href="{{asset('assets/common/css/font-awesome.min.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/common/css/elegant-icons.css' )}}">
+    <link rel="stylesheet" href="{{asset('assets/common/css/nice-select.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/common/css/jquery-ui.min.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/common/css/owl.carousel.min.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/common/css/slicknav.min.css')}}">
+    <link rel="stylesheet" href="{{asset($activeTemplateTrue.'css/style.css')}}">
     @stack('style-lib')
 
     @stack('style')
@@ -43,6 +51,16 @@
     <link rel="stylesheet" href="{{ asset($activeTemplateTrue.'css/color.php') }}?color={{ $general->base_color }}&secondColor={{ $general->secondary_color }}">
 </head>
 <body>
+
+    {{-- <div id="preloder">
+        <div class="loader"></div>
+    </div> --}}
+    @include($activeTemplate.'common.ham_nav')
+    @include($activeTemplate.'common.header')
+    @include($activeTemplate.'common.sidebar')
+    @yield('content')
+
+    @include($activeTemplate.'common.footer')
 
 @stack('fbComment')
 
