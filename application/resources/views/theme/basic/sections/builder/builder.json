@@ -15,6 +15,16 @@
             }
         }
     },
+
+    "categories":{
+        "builder":true,
+        "name":"Category",
+        "content":{
+            "heading":"text",
+            "subheading":"text"
+        }
+        
+    },
     "feature": {
         "builder": true,
         "name": "Feature Section",

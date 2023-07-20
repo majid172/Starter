@@ -57,7 +57,7 @@
     </div> --}}
     @include($activeTemplate.'common.ham_nav')
     @include($activeTemplate.'common.header')
-    @include($activeTemplate.'common.sidebar')
+    {{-- @include($activeTemplate.'common.sidebar') --}}
     @yield('content')
 
     @include($activeTemplate.'common.footer')

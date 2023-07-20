@@ -1,4 +1,5 @@
 @extends($activeTemplate.'layouts.frontend')
+
 @section('content')
 
 @if($sections->secs != null)
