@@ -1,3 +1,7 @@
+    @php
+        $languages = \App\Models\Language::get();
+       
+    @endphp
     <!-- Header Section Begin -->
     <header class="header">
         <div class="header__top">
@@ -7,7 +11,7 @@
                         <div class="header__top__left">
                             <ul>
                                 <li><i class="fas fa-envelope"></i> hello@colorlib.com</li>
-                                <li>Free Shipping for all Order of $99</li>
+                                <li>@lang('Free Shipping for all Order of $99')</li>
                             </ul>
                         </div>
                     </div>
@@ -19,18 +23,35 @@
                                 <a href="#"><i class="fab fa-linkedin"></i></a>
                                 <a href="#"><i class="fab fa-pinterest-p"></i></a>
                             </div>
+                            @guest
                             <div class="header__top__right__language">
                                 <img src="img/language.png" alt="">
                                 <div>English</div>
                                 <span class="arrow_carrot-down"></span>
-                                <ul>
+                                <select class="select language-select">
+                                    @foreach ($languages as $lang)
+                                        <option value="{{$lang->code}}" @if(Session::get('lang')==$lang->code) selected @endif> {{__($lang->name)}} </option>
+                                    @endforeach
+
+                                </select>
+                                {{-- <ul>
+                                    @foreach($languages as $lang)
                                     <li><a href="#">Spanis</a></li>
+                                    @endforeach
                                     <li><a href="#">English</a></li>
-                                </ul>
+                                </ul> --}}
                             </div>
                             <div class="header__top__right__auth">
-                                <a href="#"><i class="fas fa-user"></i> Login</a>
+                                <a href="{{route('user.login')}}"><i class="fas fa-user"></i> @lang('Login')</a>
                             </div>
+                            @endguest
+
+                            @auth
+                            <div class="header__top__right__auth">
+                                <a href="{{route('user.logout')}}"><i class="fas fa-user"></i> @lang('Logout')</a>
+                            </div>
+                            @endauth
+
                         </div>
                     </div>
                 </div>
@@ -40,14 +61,14 @@
             <div class="row">
                 <div class="col-lg-3">
                     <div class="header__logo">
-                        <a href="./index.html"><img src="img/logo.png" alt=""></a>
+                        <a href="{{route('home')}}"><img src="{{ getImage('assets/images/general/logo.png') }}" alt="logo"></a>
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <nav class="header__menu">
                         <ul>
-                            <li class="active"><a href="./index.html">Home</a></li>
-                            <li><a href="./shop-grid.html">Shop</a></li>
+                            <li class="active"><a href="{{route('home')}}">@lang('Home')</a></li>
+                            <li><a href="javascript:void()">@lang('Shop')</a></li>
                             <li><a href="#">Pages</a>
                                 <ul class="header__menu__dropdown">
                                     <li><a href="./shop-details.html">Shop Details</a></li>
@@ -56,8 +77,8 @@
                                     <li><a href="./blog-details.html">Blog Details</a></li>
                                 </ul>
                             </li>
-                            <li><a href="./blog.html">Blog</a></li>
-                            <li><a href="./contact.html">Contact</a></li>
+                            <li><a href="">Blog</a></li>
+                            <li><a href="">@lang('Contact')</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -67,7 +88,7 @@
                             <li><a href="#"><i class="fas fa-heart"></i> <span>1</span></a></li>
                             <li><a href="#"><i class="fas fa-shopping-bag"></i> <span>3</span></a></li>
                         </ul>
-                        <div class="header__cart__price">item: <span>$150.00</span></div>
+                        <div class="header__cart__price">@lang('item'): <span>$150.00</span></div>
                     </div>
                 </div>
             </div>

@@ -31214,3 +31214,9 @@ img {
     font-size: 0.812rem;
     line-height: 1.5;
 }
+
+/* section images */
+.profilePicPreview {
+    height: 200px;
+    width: 100%;
+}

@@ -11,7 +11,7 @@
                 <div class="col-lg-3 col-md-3 col-sm-6">
                     <div class="footer__about">
                         <div class="footer__about__logo">
-                            <a href="{{route('home')}}"><img src="{{ getImage('assets/images/general/logo.png') }}" alt=""></a>
+                            <a href="{{route('home')}}"><img src="{{ getImage('assets/images/general/logo.png') }}" alt="logo"></a>
                         </div>
                         <ul>
                             <li>@lang('Address'): {{__($contact->data_values->address)}}</li>
@@ -67,8 +67,8 @@
             </div>
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="footer__copyright">
-                        <div class="footer__copyright__text"><p>
+                    <div class="footer__copyright ">
+                        <div class="footer__copyright__text "><p class="text-center">
                             @php echo $contact->data_values->website_footer; @endphp</p></div>
                         <div class="footer__copyright__payment"><img src="img/payment-item.png" alt=""></div>
                     </div>
