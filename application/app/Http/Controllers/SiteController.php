@@ -32,6 +32,11 @@ class SiteController extends Controller
         return view($this->activeTemplate . 'pages', compact('pageTitle','sections'));
     }
 
+    public function shop()
+    {
+        $pageTitle = "Fish Shop";
+        return view($this->activeTemplate.'shop',compact('pageTitle'));
+    }
 
     public function contact()
     {
