@@ -1,6 +1,8 @@
     @php
         $languages = \App\Models\Language::get();
-       
+       $contact = getContent('contact_us.content',true);
+       $pages = App\Models\Page::get();
+
     @endphp
     <!-- Header Section Begin -->
     <header class="header">
@@ -10,7 +12,7 @@
                     <div class="col-lg-6 col-md-6">
                         <div class="header__top__left">
                             <ul>
-                                <li><i class="fas fa-envelope"></i> hello@colorlib.com</li>
+                                <li><i class="fas fa-envelope"></i> {{__($contact->data_values->email_address)}} </li>
                                 <li>@lang('Free Shipping for all Order of $99')</li>
                             </ul>
                         </div>
@@ -26,7 +28,7 @@
                             @guest
                             <div class="header__top__right__language">
                                 <img src="img/language.png" alt="">
-                                <div>English</div>
+                                {{-- <div>English</div> --}}
                                 <span class="arrow_carrot-down"></span>
                                 <select class="select language-select">
                                     @foreach ($languages as $lang)
@@ -67,8 +69,12 @@
                 <div class="col-lg-6">
                     <nav class="header__menu">
                         <ul>
-                            <li class="active"><a href="{{route('home')}}">@lang('Home')</a></li>
-                            <li><a href="javascript:void()">@lang('Shop')</a></li>
+                            
+
+                            @foreach ($pages as $page)
+                                <li><a href="{{route('pages',$page->slug)}}">{{__($page->name)}}</a></li>
+                            @endforeach
+                            {{-- <li><a href="javascript:void()">@lang('Shop')</a></li> --}}
                             <li><a href="#">Pages</a>
                                 <ul class="header__menu__dropdown">
                                     <li><a href="./shop-details.html">Shop Details</a></li>
@@ -77,8 +83,7 @@
                                     <li><a href="./blog-details.html">Blog Details</a></li>
                                 </ul>
                             </li>
-                            <li><a href="">Blog</a></li>
-                            <li><a href="">@lang('Contact')</a></li>
+                       
                         </ul>
                     </nav>
                 </div>
