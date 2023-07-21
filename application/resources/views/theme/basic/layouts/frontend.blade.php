@@ -57,6 +57,9 @@
     </div> --}}
     @include($activeTemplate.'common.ham_nav')
     @include($activeTemplate.'common.header')
+    @if (request()->route()->uri != '/')
+        @include($activeTemplate.'common.breadcrumb')
+    @endif
     {{-- @include($activeTemplate.'common.sidebar') --}}
     @yield('content')
 

@@ -1,5 +1,6 @@
 @extends($activeTemplate.'layouts.frontend')
 @section('content')
+
 <section class="product spad">
     <div class="container">
         <div class="row">
