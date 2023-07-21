@@ -177,9 +177,8 @@
         "name": "Contact Us",
         "content": {
             "title": "text",
-            "short_details": "text",
+            "address": "text",
             "email_address": "text",
-            "contact_details": "text",
             "contact_number": "text",
             "latitude": "text",
             "longitude": "text",
