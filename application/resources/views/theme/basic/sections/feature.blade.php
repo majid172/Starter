@@ -8,4 +8,3 @@
 
     #getContent('data_key','singleQuery true/false','limit');
 @endphp
-hello feature

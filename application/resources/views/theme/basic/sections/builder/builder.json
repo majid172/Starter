@@ -20,8 +20,8 @@
         "builder":true,
         "name":"Category",
         "content":{
-            "heading":"text",
-            "subheading":"text"
+            "heading":"text"
+            
         }
         
     },
@@ -137,8 +137,8 @@
         "builder": true,
         "name": "Blog Section",
         "content": {
-            "heading": "text",
-            "subheading": "text"
+            "heading": "text"
+            
         },
         "element": {
             "images":{

@@ -7,11 +7,13 @@
             <div class="col-lg-12">
                 <div class="section-title">
                     <h2> {{__($content->data_values->heading)}}</h2>
+                    
                 </div>
+               
             </div>
 
             <div class="categories__slider owl-carousel">
-                <div class="col-lg-3">
+                <div class="col-lg-3">cccccccccc
                     <div class="categories__item set-bg" data-setbg="img/categories/cat-1.jpg">
                         <h5><a href="#">Fresh Fruit</a></h5>
                     </div>
