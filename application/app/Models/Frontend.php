@@ -14,4 +14,10 @@ class Frontend extends Model
     {
         return Frontend::where('data_keys', $data_keys);
     }
+
+    public function getCreatedAtAttribute($value)
+    {
+        $date = \Carbon\Carbon::parse($value);
+        return $date->format('d M, Y');
+    }
 }
