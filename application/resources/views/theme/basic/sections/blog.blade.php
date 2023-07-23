@@ -1,6 +1,6 @@
 @php
     $content = getContent('blog.content',true);
-    $blogs = getContent('blog.element',false);
+    $blogs = getContent('blog.element',false,4);
     #getContent('data_key','singleQuery true/false','limit');
 @endphp
     <!-- Blog Section Begin -->
@@ -20,7 +20,9 @@
                 <div class="col-lg-4 col-md-4 col-sm-6">
                     <div class="blog__item">
                         <div class="blog__item__pic">
+                            <a href="{{ route('blog.details', ['slug' => slug($item->data_values->title), 'id' => $item->id])}}">
                             <img src="{{__(getImage(getFilePath('frontend').'/blog/'.$item->data_values->blog_image))}}" alt="">
+                        </a>
                         </div>
                         <div class="blog__item__text">
                             <ul>
