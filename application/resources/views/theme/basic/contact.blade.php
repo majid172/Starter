@@ -1,49 +1,85 @@
+@php
+    $contact = getContent('contact_us.content',true);
+@endphp
 @extends($activeTemplate.'layouts.frontend')
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8 col-lg-7 col-xl-5">
-            <div class="text-end">
-                <a href="{{ route('home') }}" class="fw-bold home-link"> <i class="las la-long-arrow-alt-left"></i>
-                    @lang('Go to Home')</a>
-            </div>
-            <div class="card custom--card">
-                <div class="card-header">
-                    <h5 class="card-title">{{ __($pageTitle) }}</h5>
+
+<section class="contact spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-3 col-sm-6 text-center">
+                <div class="contact__widget">
+                    <span class="icon_phone"></span>
+                    <h4>@lang('Phone')</h4>
+                    <p>{{__($contact->data_values->contact_number)}}</p>
                 </div>
-                <div class="card-body">
-                    <form method="post" action="" class="verify-gcaptcha">
-                        @csrf
-                        <div class="form-group">
-                            <label class="form-label">@lang('Name')</label>
-                            <input name="name" type="text" class="form-control form--control"
-                                value="@if(auth()->user()){{ auth()->user()->fullname }} @else{{ old('name') }}@endif"
-                                @if(auth()->user()) readonly @endif required>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">@lang('Email')</label>
-                            <input name="email" type="email" class="form-control form--control"
-                                value="@if(auth()->user()){{ auth()->user()->email }}@else{{  old('email') }}@endif"
-                                @if(auth()->user()) readonly @endif required>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">@lang('Subject')</label>
-                            <input name="subject" type="text" class="form-control form--control"
-                                value="{{old('subject')}}" required>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">@lang('Message')</label>
-                            <textarea name="message" wrap="off" class="form-control form--control"
-                                required>{{old('message')}}</textarea>
-                        </div>
-                        <x-captcha></x-captcha>
-                        <div class="form-group">
-                            <button type="submit" class="btn btn--base w-100">@lang('Save')</button>
-                        </div>
-                    </form>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-6 text-center">
+                <div class="contact__widget">
+                    <span class="icon_pin_alt"><i class="las la-map-marker-alt"></i></span>
+                    <h4>@lang('Address')</h4>
+                    <p>{{__($contact->data_values->address)}}</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-6 text-center">
+                <div class="contact__widget">
+                    <span class="icon_clock_alt"></span>
+                    <h4>@lang('Open time')</h4>
+                    <p>10:00 am to 23:00 pm</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-6 text-center">
+                <div class="contact__widget">
+                    <span class="icon_mail_alt"></span>
+                    <h4>@lang('Email')</h4>
+                    <p>{{__($contact->data_values->email_address)}}</p>
                 </div>
             </div>
         </div>
     </div>
-</div>
+</section>
+
+    <!-- Map Begin -->
+    <div class="map">
+        <iframe
+            src="https://maps.google.com/maps?q={{ $contact->data_values->latitude }},{{ $contact->data_values->longitude }}&hl=es;z=14&amp;output=embed"
+            height="500" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+       
+    </div>
+    <!-- Map End -->
+
+    <!-- Contact Form Begin -->
+    <div class="contact-form spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="contact__form__title">
+                        <h2>{{__($pageTitle)}}</h2>
+                    </div>
+                </div>
+            </div>
+
+            <form action="" method="POST">
+                @csrf
+                <div class="row">
+                    <div class="col-lg-6 col-md-6">
+                        <input type="text" name="name" placeholder="@lang('Your name')"  value="@if(auth()->user()){{ auth()->user()->fullname }} @else{{ old('name') }}@endif"
+                        @if(auth()->user()) readonly @endif required>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <input type="email" name="email"  value="@if(auth()->user()){{ auth()->user()->email }}@else{{  old('email') }}@endif"
+                        @if(auth()->user()) readonly @endif required placeholder="@lang('Your Email')">
+                    </div>
+                    <div class="col-lg-12 text-center">
+                        <textarea name="message" placeholder="@lang('Your message')"></textarea>
+                    </div>
+                    <x-captcha></x-captcha>
+                    <div class="col-lg-12 text-center">
+                        <button type="submit" class="site-btn">@lang('SEND MESSAGE')</button>
+                    </div>
+                    
+                </div>
+            </form>
+        </div>
+    </div>
 @endsection
