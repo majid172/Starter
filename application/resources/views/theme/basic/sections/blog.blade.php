@@ -73,7 +73,7 @@
                             </div>
                             <div class="blog__item__text">
                                 <ul>
-                                    <li><i class="fa fa-calendar-o"></i> {{$item->created_at}} </li>
+                                    <li><i class="fas fa-calendar-o"></i> {{$item->created_at}} </li>
                                    
                                 </ul>
                                 <h5><a href="{{ route('blog.details', ['slug' => slug($item->data_values->title), 'id' => $item->id])}}">{{__($item->data_values->title)}}</a></h5>
