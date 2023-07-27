@@ -1,6 +1,13 @@
 @php
     $content = getContent('blog.content',true);
-    $blogs = getContent('blog.element',false,4);
+    if (request()->url() == request('/').'/blog') {
+        $blogs = getContent('blog.element',false,8);
+    }
+    else{
+        $blogs = getContent('blog.element',false,3);
+    }
+    
+    
     #getContent('data_key','singleQuery true/false','limit');
 @endphp
 <section class="blog spad">
@@ -10,8 +17,8 @@
                 <div class="blog__sidebar">
                     <div class="blog__sidebar__search">
                         <form action="#">
-                            <input type="text" placeholder="Search...">
-                            <button type="submit"><span class="icon_search"></span></button>
+                            <input type="text" placeholder="@lang('Search...')">
+                            <button type="submit"><span><i class="fas fa-search"></i></span></button>
                         </form>
                     </div>
                     <div class="blog__sidebar__item">
@@ -25,35 +32,22 @@
                         </ul>
                     </div>
                     <div class="blog__sidebar__item">
-                        <h4>Recent News</h4>
+                        <h4>@lang('Recent News')</h4>
                         <div class="blog__sidebar__recent">
-                            <a href="#" class="blog__sidebar__recent__item">
+
+                            @foreach ($blogs as $item)
+                            <a href="{{ route('blog.details', ['slug' => slug($item->data_values->title), 'id' => $item->id])}}" class="blog__sidebar__recent__item">
                                 <div class="blog__sidebar__recent__item__pic">
-                                    <img src="img/blog/sidebar/sr-1.jpg" alt="">
+                                    <img src="{{__(getImage(getFilePath('frontend').'/blog/'.'thumb_'.$item->data_values->blog_image))}}" alt="">
                                 </div>
                                 <div class="blog__sidebar__recent__item__text">
-                                    <h6>09 Kinds Of Vegetables<br /> Protect The Liver</h6>
-                                    <span>MAR 05, 2019</span>
+                                    <h6>{{__($item->data_values->title)}}</h6>
+                                    <span>{{$item->created_at}}</span>
                                 </div>
                             </a>
-                            <a href="#" class="blog__sidebar__recent__item">
-                                <div class="blog__sidebar__recent__item__pic">
-                                    <img src="img/blog/sidebar/sr-2.jpg" alt="">
-                                </div>
-                                <div class="blog__sidebar__recent__item__text">
-                                    <h6>Tips You To Balance<br /> Nutrition Meal Day</h6>
-                                    <span>MAR 05, 2019</span>
-                                </div>
-                            </a>
-                            <a href="#" class="blog__sidebar__recent__item">
-                                <div class="blog__sidebar__recent__item__pic">
-                                    <img src="img/blog/sidebar/sr-3.jpg" alt="">
-                                </div>
-                                <div class="blog__sidebar__recent__item__text">
-                                    <h6>4 Principles Help You Lose <br />Weight With Vegetables</h6>
-                                    <span>MAR 05, 2019</span>
-                                </div>
-                            </a>
+                            @endforeach
+                           
+                          
                         </div>
                     </div>
                     <div class="blog__sidebar__item">
