@@ -1,4 +1,5 @@
-<nav class="sidebar sidebar-offcanvas" id="sidebar">
+<nav class="sidebar sidebar-offcanvas" id="sidebar" style="overflow-y: scroll;
+    max-height: 100vh;">
     <ul class="nav">
       <li class="nav-item">
         <a class="nav-link" href="{{route('admin.dashboard')}}">

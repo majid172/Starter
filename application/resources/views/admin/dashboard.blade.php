@@ -2,7 +2,8 @@
 
 @section('panel')
 
-<div class="main-panel">
+<div class="main-panel" style = "  overflow-y: scroll;
+    max-height: 100vh;">
     <div class="content-wrapper">
 
       <div class="row">
@@ -130,7 +131,7 @@
                   
                       </div>
                       <div>
-                          <a href="{{route('admin.ticket.pending')}}" class="btn btn-primary btn-rounded" type="button"><i class="mdi mdi-account-card-details"></i>@lang('See all')</a>
+                          <a href="{{route('admin.ticket.pending')}}" class="btn btn-primary btn-rounded" type="button">@lang('See all')</a>
                       </div>
                   </div>
                   <div class="table-responsive  mt-1">
