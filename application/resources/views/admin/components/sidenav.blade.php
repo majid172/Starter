@@ -7,6 +7,13 @@
           <span class="menu-title">@lang('Dashboard')</span>
         </a>
       </li>
+
+      {{-- categories --}}
+      <li class="nav-item nav-category">@lang('Category')</li>
+      <li class="nav-item"> <a class="nav-link" href="{{route('admin.category')}}"> <i class="menu-icon mdi mdi-account-circle-outline"></i>
+        <span class="menu-title">  @lang('List')</span>
+      </a></li>
+
       <li class="nav-item nav-category">@lang('Users Management')</li>
       <li class="nav-item">
         <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
