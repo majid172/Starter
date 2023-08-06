@@ -18,33 +18,21 @@ class CategoryController extends Controller
         return view('admin.category.list',$data,compact('pageTitle'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+   
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            "category_name" => 'required|string',
+            "description" => 'required|string'
+        ]);
+        $category = new Category();
+        $category->name = $request->category_name;
+        $category->description = $request->description;
+        $category->save();
+        return back()->with('success',"Add new category successfully");
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(string $id)
     {
         //
