@@ -25442,6 +25442,10 @@ dl li {
   height: 36px;
   border-radius: 100%;
 }
+.table td .no_data img{
+  width: 55px;
+  height: 60px;
+}
 
 .table td .badge {
   margin-bottom: 0;
