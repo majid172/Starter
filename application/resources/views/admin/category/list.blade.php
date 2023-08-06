@@ -10,7 +10,7 @@
                 <h4 class="card-title text-primary">{{$pageTitle}}</h4>
                 
                 <div class="d-flex justify-content-end mb-2">
-                    <button type="button" class="btn btn-primary btn-sm add" data-bs-toggle="modal" data-bs-target="#addModal">
+                    <button type="button" class="btn btn-primary btn-sm add" data-bs-toggle="modal" data-bs-target="#addModal"><i class="fas fa-plus"></i>
                         @lang('Add New')
                       </button>
                  
@@ -84,10 +84,9 @@
                     <label for="description">@lang('Description')</label>
                     <input type="text" class="form-control" name="description" id="description" placeholder="Enter description">
                 </div>
-            </div>
-            <div class="modal-footer">
                 <button type="submit" class="btn btn-primary">@lang('Add')</button>
             </div>
+           
         </form>
         
 
