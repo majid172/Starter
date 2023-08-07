@@ -182,6 +182,7 @@
             "contact_number": "text",
             "latitude": "text",
             "longitude": "text",
+            "description":"textarea",
             "website_footer": "textarea-rich"
         }
     },

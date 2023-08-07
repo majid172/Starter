@@ -88,16 +88,19 @@
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="{{asset('assets/common/js/jquery-3.6.0.min.js')}}"></script>
+<script src="{{asset('assets/common/js/jquery-3.3.1.min.js')}}"></script>
 <script src="{{asset('assets/common/js/bootstrap.bundle.min.js')}}"></script>
-    <!-- Js Plugins -->
-    {{-- <script src="js/jquery-3.3.1.min.js"></script> --}}
-    {{-- <script src="js/bootstrap.min.js"></script> --}}
+
     <script src="{{asset('assets/common/js/jquery.nice-select.min.js')}}"></script>
     <script src="{{asset('assets/common/js/jquery-ui.min.js')}}"></script>
     <script src="{{asset('assets/common/js/jquery.slicknav.js')}}"></script>
     <script src="{{asset('assets/common/js/mixitup.min.js')}}"></script>
     <script src="{{asset('assets/common/js/owl.carousel.min.js')}}"></script>
+    
+    <script src="{{asset('assets/common/js/easing/easing.js')}}"></script>
+    <script src="{{asset('assets/common/js/easing/easing.min.js')}}"></script>
+    <script src="{{asset('assets/common/js/contact.js')}}"></script>
+    <script src="{{asset('assets/common/js/jqBootstrapValidation.min.js')}}"></script>
     <script src="{{asset('assets/common/js/main.js')}}"></script>
 
 
