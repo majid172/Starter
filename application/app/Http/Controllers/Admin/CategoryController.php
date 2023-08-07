@@ -26,16 +26,38 @@ class CategoryController extends Controller
             "category_name" => 'required|string',
             "description" => 'required|string'
         ]);
-        $category = new Category();
+        if($request->id)
+        {
+            $category = Category::find($request->id);
+        }
+        else{
+            $category = new Category();
+        }
         $category->name = $request->category_name;
         $category->description = $request->description;
         $category->save();
+        if($request->id)
+        {
+            return back()->with('success',"Category update successfully");
+        }
         return back()->with('success',"Add new category successfully");
     }
 
-    public function edit(string $id)
+    public function action($id)
     {
-        //
+        $category = Category::find($id);
+        
+        if($category->status == 1)
+        {
+            $category->status = 0;
+            
+        }
+        else{
+            $category->status = 1;
+        }
+        
+        $category->save();
+        return back();
     }
 
     /**

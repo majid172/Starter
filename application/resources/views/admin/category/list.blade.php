@@ -41,7 +41,19 @@
                                         @endif
                                     </td>
                                     <td>
-                                        <button class="btn btn-primary btn-sm">@lang('Edit')</button>
+                                        @if ($item->status == 1)
+                                        <button type="button" class="btn btn-danger btn-sm action" data-bs-toggle="modal" data-route="{{route('admin.category.action',$item->id)}}" data-bs-target="#actionModal">
+                                            @lang('Inactive')
+                                          </button>
+                                           
+                                        @elseif($item->status == 0)
+                                        <button type="button" class="btn btn-success btn-sm action" data-bs-toggle="modal" data-route="{{route('admin.category.action',$item->id)}}" data-bs-target="#actionModal">
+                                            @lang('Active')
+                                          </button>
+                                        
+                                        @endif
+                                      
+                                        <button class="btn btn-primary btn-sm edit" data-bs-toggle="modal" data-bs-target="#addModal" data-id="{{$item->id}}" data-name="{{__($item->name)}}" data-description="{{__($item->description)}}">@lang('Edit')</button>
                                     </td>
                                 </tr>
                             @empty
@@ -77,12 +89,13 @@
             @csrf
             <div class="modal-body">
                 <div class="form-group">
+                    <input type="hidden" name="id" >
                     <label for="category">@lang('Category')</label>
-                    <input type="text" class="form-control" name="category_name" id="category" placeholder="Enter category name" required>
+                    <input type="text" class="form-control" name="category_name" id="category" placeholder="@lang('Enter category name')" required>
                 </div>
                 <div class="form-group">
                     <label for="description">@lang('Description')</label>
-                    <input type="text" class="form-control" name="description" id="description" placeholder="Enter description">
+                    <input type="text" class="form-control" name="description" id="description" placeholder="@lang('Enter description')">
                 </div>
                 <button type="submit" class="btn btn-primary">@lang('Add')</button>
             </div>
@@ -92,13 +105,51 @@
 
       </div>
     </div>
+</div>
+
+{{-- action modal --}}
+<div class="modal fade" id="actionModal" tabindex="-1" aria-labelledby="actionModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="actionModalLabel">@lang('Change action')</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <form action="" method="POST" class="status">
+            @csrf
+            <div class="modal-body">
+                @lang('Are you want to change status?')
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">@lang('No')</button>
+                  <button type="submit" class="btn btn-primary">@lang('Yes')</button>
+              </div>
+        </form>
+      </div>
+    </div>
   </div>
 @endsection
 
-{{-- @push('script')
+@push('script')
     <script>
-       $('.add').on('click',function(){
+       $('.action').on('click',function(){
+            let url = $(this).attr('data-route');
+            let modal = $('#actionModal');
+            $('.status').attr('action',url);
+            modal.show();
 
        });
+
+    //    edit
+       $('.edit').on('click',function(){
+            let modal = $('#addModal');
+            let name = $(this).data('name');
+            let description = $(this).data('description');
+
+            modal.find('[name="id"]').val($(this).data('id'));
+            modal.find('[name="category_name"]').val(name);
+            modal.find('[name="description"]').val(description);
+            modal.show();
+       });
     </script>
-@endpush --}}
+@endpush

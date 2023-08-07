@@ -47,6 +47,7 @@ Route::middleware('admin')->group(function () {
     Route::controller('CategoryController')->group(function(){
         Route::get('category','list')->name('category');
         Route::post('category','store')->name('category.store');
+        Route::post('/action/{id}','action')->name('category.action');
     }); 
 
     // Users Manager
