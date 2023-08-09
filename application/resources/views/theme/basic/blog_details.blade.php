@@ -1,5 +1,8 @@
 @extends($activeTemplate.'layouts.frontend')
 @section('content')
+@php
+    $categories = \App\Models\Category::get();
+@endphp
     <!-- Blog Details Section Begin -->
     <section class="blog-details spad">
         <div class="container">
@@ -12,16 +15,7 @@
                                 <button type="submit"><span><i class="fas fa-search"></i></span></button>
                             </form>
                         </div>
-                        <div class="blog__sidebar__item">
-                            <h4>@lang('Categories')</h4>
-                            <ul>
-                                <li><a href="#">All</a></li>
-                                <li><a href="#">Beauty (20)</a></li>
-                                <li><a href="#">Food (5)</a></li>
-                                <li><a href="#">Life Style (9)</a></li>
-                                <li><a href="#">Travel (10)</a></li>
-                            </ul>
-                        </div>
+                        
                         <div class="blog__sidebar__item">
                             <h4>@lang('Recent News')</h4>
                             <div class="blog__sidebar__recent">
@@ -44,12 +38,10 @@
                         <div class="blog__sidebar__item">
                             <h4>@lang('Search By')</h4>
                             <div class="blog__sidebar__item__tags">
-                                <a href="#">Apple</a>
-                                <a href="#">Beauty</a>
-                                <a href="#">Vegetables</a>
-                                <a href="#">Fruit</a>
-                                <a href="#">Healthy Food</a>
-                                <a href="#">Lifestyle</a>
+                                @foreach ($categories as $item)
+                                    <a href="#">{{__($item->name)}}</a>
+                                @endforeach
+                               
                             </div>
                         </div>
                     </div>

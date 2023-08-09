@@ -1,18 +1,18 @@
 @php
     $content = getContent('blog.content',true);
-    dd(request()->url(),request('/'));
-    if (request()->url() == request('/').'/blog') {
+ 
+    if (request()->url() == url('/').'/blog') {
         
         $blogs = getContent('blog.element',false,8);
     }
     else{
-        dd('dd');
+       
         $blogs = getContent('blog.element',false,3);
     }
     $categories = App\Models\Category::all();
-    
-    #getContent('data_key','singleQuery true/false','limit');
 @endphp
+
+@if (request()->url() == url('/').'/blog')
 <section class="blog spad">
     <div class="container">
         <div class="row">
@@ -54,17 +54,7 @@
                           
                         </div>
                     </div>
-                    <div class="blog__sidebar__item">
-                        <h4>Search By</h4>
-                        <div class="blog__sidebar__item__tags">
-                            <a href="#">Apple</a>
-                            <a href="#">Beauty</a>
-                            <a href="#">Vegetables</a>
-                            <a href="#">Fruit</a>
-                            <a href="#">Healthy Food</a>
-                            <a href="#">Lifestyle</a>
-                        </div>
-                    </div>
+                    
                 </div>
             </div>
             <div class="col-lg-8 col-md-7">
@@ -107,3 +97,40 @@
         </div>
     </div>
 </section>
+@else
+<section class="from-blog spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="section-title from-blog__title">
+                    <h2>{{__($content->data_values->heading)}}</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            @foreach ($blogs as $blog)
+            <div class="col-lg-4 col-md-4 col-sm-6">
+                <div class="blog__item">
+                    <div class="blog__item__pic">
+                        <img src="{{__(getImage(getFilePath('frontend').'/blog/'.$blog->data_values->blog_image))}}" alt="">
+                    </div>
+                    <div class="blog__item__text">
+                        <ul>
+                            <li><i class="fas fa-calendar-o"></i>{{$blog->created_at}}</li>
+                         
+                        </ul>
+                        <h5><a href="">{{__($blog->data_values->title)}}</a></h5>
+                        <p>@php
+                            $description = $blog->data_values->description;
+                            $limitDescription = Str::limit($description, 80, '...');
+                            echo $limitDescription;
+                        @endphp</p>
+                    </div>
+                </div>
+            </div>
+            @endforeach
+        
+        </div>
+    </div>
+</section>        
+@endif
