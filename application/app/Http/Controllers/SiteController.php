@@ -39,6 +39,16 @@ class SiteController extends Controller
         return view($this->activeTemplate.'shop',compact('pageTitle'));
     }
 
+    public function blogs()
+    {
+        $pageTitle = "Blog";
+
+        $sections   = Page::where('tempname',$this->activeTemplate)->where('slug','blog')->firstOrFail();
+        $blogs      = Frontend::where('data_keys','blog.element')->latest()->paginate(getPaginate());
+        $latests = Frontend::where('data_keys','blog.element')->orderBy('id','desc')->limit(5)->get();
+        return view($this->activeTemplate.'blogs',compact('pageTitle','blogs','sections','latests'));
+    }
+
     public function contact()
     {
         $pageTitle = "Contact Us";

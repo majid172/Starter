@@ -4,43 +4,64 @@
 @extends($activeTemplate.'layouts.frontend')
 @section('content')
 
-<section class="contact spad">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-3 col-md-3 col-sm-6 text-center">
-                <div class="contact__widget">
-                    <span class="icon_phone"></span>
-                    <h4>@lang('Phone')</h4>
-                    <p>{{__($contact->data_values->contact_number)}}</p>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-3 col-sm-6 text-center">
-                <div class="contact__widget">
-                    <span class="icon_pin_alt"><i class="las la-map-marker-alt"></i></span>
-                    <h4>@lang('Address')</h4>
-                    <p>{{__($contact->data_values->address)}}</p>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-3 col-sm-6 text-center">
-                <div class="contact__widget">
-                    <span class="icon_clock_alt"></span>
-                    <h4>@lang('Open time')</h4>
-                    <p>10:00 am to 23:00 pm</p>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-3 col-sm-6 text-center">
-                <div class="contact__widget">
-                    <span class="icon_mail_alt"></span>
-                    <h4>@lang('Email')</h4>
-                    <p>{{__($contact->data_values->email_address)}}</p>
-                </div>
+<div class="container-fluid pt-5">
+    <div class="text-center mb-4">
+        <h2 class="section-title px-5"><span class="px-2">@lang('Contact For Any Queries')</span></h2>
+    </div>
+    <div class="row px-xl-5">
+        <div class="col-lg-7 mb-3">
+            <h4>{{$pageTitle}}</h4>
+            <div class="contact-form">
+                
+                <div id="success"></div>
+                <form action="" method="POST" novalidate="novalidate">
+                    @csrf
+                    <div class="control-group">
+                        <input type="text" class="form-control" name="name" id="name" placeholder="Your Name" value="@if(auth()->user()){{ auth()->user()->fullname }} @else{{ old('name') }}@endif"
+                        @if(auth()->user()) readonly @endif required
+                             data-validation-required-message="Please enter your name" />
+                        <p class="help-block text-danger"></p>
+                    </div>
+                    <div class="control-group">
+                        <input type="email" class="form-control" id="email" placeholder="Your Email"
+                        name="email"  value="@if(auth()->user()){{ auth()->user()->email }}@else{{  old('email') }}@endif" @if(auth()->user()) readonly @endif required placeholder="@lang('Your Email')" data-validation-required-message="Please enter your email" />
+                        <p class="help-block text-danger"></p>
+                    </div>
+
+                    <div class="control-group">
+                        <input type="text" class="form-control" id="email" placeholder="@lang('Subject')"name="subject">
+                        <p class="help-block text-danger"></p>
+                    </div>
+
+                  
+                    <div class="control-group">
+                        <textarea class="form-control" name="message" rows="6" id="message" placeholder="@lang('Message')"
+                            required="required"
+                            data-validation-required-message="Please enter your message"></textarea>
+                        <p class="help-block text-danger"></p>
+                    </div>
+                    <div>
+                        <button class="btn btn-primary py-2 px-4" type="submit" id="sendMessageButton">@lang('Send Message')</button>
+                    </div>
+                </form>
             </div>
         </div>
+        <div class="col-lg-5 mb-5">
+            <h5 class="font-weight-semi-bold mb-3">@lang('Get In Touch')</h5>
+            <p>{{__($contact->data_values->description)}}</p>
+            <div class="d-flex flex-column mb-3">
+               
+                <p class="mb-2"><i class="fas fa-map-marker-alt text-primary mr-3"></i>{{__($contact->data_values->address)}}</p>
+                <p class="mb-2"><i class="fas fa-envelope text-primary mr-3"></i>{{__($contact->data_values->email_address)}}</p>
+                <p class="mb-2"><i class="fas fa-phone-alt text-primary mr-3"></i>{{__($contact->data_values->contact_number)}}</p>
+            </div>
+           
+        </div>
     </div>
-</section>
+</div>
 
     <!-- Map Begin -->
-    <div class="map">
+    <div class="map mb-0">
         <iframe
             src="https://maps.google.com/maps?q={{ $contact->data_values->latitude }},{{ $contact->data_values->longitude }}&hl=es;z=14&amp;output=embed"
             height="500" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
@@ -48,38 +69,5 @@
     </div>
     <!-- Map End -->
 
-    <!-- Contact Form Begin -->
-    <div class="contact-form spad">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="contact__form__title">
-                        <h2>{{__($pageTitle)}}</h2>
-                    </div>
-                </div>
-            </div>
 
-            <form action="" method="POST">
-                @csrf
-                <div class="row">
-                    <div class="col-lg-6 col-md-6">
-                        <input type="text" name="name" placeholder="@lang('Your name')"  value="@if(auth()->user()){{ auth()->user()->fullname }} @else{{ old('name') }}@endif"
-                        @if(auth()->user()) readonly @endif required>
-                    </div>
-                    <div class="col-lg-6 col-md-6">
-                        <input type="email" name="email"  value="@if(auth()->user()){{ auth()->user()->email }}@else{{  old('email') }}@endif"
-                        @if(auth()->user()) readonly @endif required placeholder="@lang('Your Email')">
-                    </div>
-                    <div class="col-lg-12 text-center">
-                        <textarea name="message" placeholder="@lang('Your message')"></textarea>
-                    </div>
-                    <x-captcha></x-captcha>
-                    <div class="col-lg-12 text-center">
-                        <button type="submit" class="site-btn">@lang('SEND MESSAGE')</button>
-                    </div>
-                    
-                </div>
-            </form>
-        </div>
-    </div>
 @endsection

@@ -1,12 +1,15 @@
 @php
     $content = getContent('blog.content',true);
+    dd(request()->url(),request('/'));
     if (request()->url() == request('/').'/blog') {
+        
         $blogs = getContent('blog.element',false,8);
     }
     else{
+        dd('dd');
         $blogs = getContent('blog.element',false,3);
     }
-    
+    $categories = App\Models\Category::all();
     
     #getContent('data_key','singleQuery true/false','limit');
 @endphp
@@ -22,13 +25,14 @@
                         </form>
                     </div>
                     <div class="blog__sidebar__item">
-                        <h4>Categories</h4>
+                        <h4>@lang('Categories')</h4>
                         <ul>
-                            <li><a href="#">All</a></li>
-                            <li><a href="#">Beauty (20)</a></li>
-                            <li><a href="#">Food (5)</a></li>
-                            <li><a href="#">Life Style (9)</a></li>
-                            <li><a href="#">Travel (10)</a></li>
+                            <li><a href="#">@lang('All')</a></li>
+                            @foreach ($categories as $category)
+                            <li><a href="#">{{__($category->name)}}</a></li>
+                            @endforeach
+                            
+                           
                         </ul>
                     </div>
                     <div class="blog__sidebar__item">
