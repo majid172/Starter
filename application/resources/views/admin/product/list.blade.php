@@ -25,6 +25,7 @@
                                 <th title="Category">@lang('Category')</th>
                                 <th title="Price">@lang('Price')</th>
                                 <th title="Stock">@lang('Stock quantity')</th>
+                                <th title="Image">@lang('Image')</th>
                                 <th title="Description">@lang('Description')</th>
                               
                                 <th title="Action">@lang('Action')</th>
@@ -33,31 +34,18 @@
                         <tbody>
                             @forelse($products as $k=>$item)
                                 <tr>
-                                    {{-- <td>{{++$k}}</td>
+                                    <td>{{++$k}}</td>
                                     <td>{{__($item->name)}}</td>
+                                    <td>{{__($item->category->name)}}</td>
+                                    <td>{{getAmount($item->price)}} {{$general->cur_text}}</td>
+                                    <td>{{__($item->stock_quantity)}}</td>
+                                    <td>{{__($item->stock_quantity)}}</td>
                                     <td>{{Str::limit($item->description,50)}}</td>
-                                    <td> 
-                                        @if ($item->status == 1)
-                                        <span class="badge badge-success text-light">@lang('Active')</span>
-                                        @else
-                                            <span class="badge badge-danger text-light">@lang('Inactive')</span>
-                                        @endif
-                                    </td>
+                                   
                                     <td>
-                                        @if ($item->status == 1)
-                                        <button type="button" class="btn btn-danger btn-sm action" data-bs-toggle="modal" data-route="{{route('admin.category.action',$item->id)}}" data-bs-target="#actionModal">
-                                            @lang('Inactive')
-                                          </button>
-                                           
-                                        @elseif($item->status == 0)
-                                        <button type="button" class="btn btn-success btn-sm action" data-bs-toggle="modal" data-route="{{route('admin.category.action',$item->id)}}" data-bs-target="#actionModal">
-                                            @lang('Active')
-                                          </button>
-                                        
-                                        @endif
                                       
                                         <button class="btn btn-primary btn-sm edit" data-bs-toggle="modal" data-bs-target="#addModal" data-id="{{$item->id}}" data-name="{{__($item->name)}}" data-description="{{__($item->description)}}">@lang('Edit')</button>
-                                    </td> --}}
+                                    </td>
                                 </tr>
                             @empty
                                 <tr>

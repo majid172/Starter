@@ -13,7 +13,8 @@ class ProductController extends Controller
     {
         $pageTitle = 'Product List';
         $categories = Category::where('status',1)->get();
-        $products = Product::get();
+        $products = Product::with('category')->get();
+
         return view('admin.product.list',compact('pageTitle','products','categories'));
     }
 
@@ -22,7 +23,7 @@ class ProductController extends Controller
         $request->validate([
             'pr_name' =>'required|string',
             'price' => 'required|numeric',
-            'catedory_id' => 'required',
+            'category_id' => 'required',
             'stock_quantity' =>'required|numeric'
         ]);
 
