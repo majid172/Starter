@@ -126,7 +126,7 @@
                         <div class="form-group">
                            
                             <label for="quantity">@lang('Quantity')</label>
-                            <input type="number" class="form-control" name="quantity" placeholder="@lang('Enter your quantity')">
+                            <input type="number" class="form-control" name="stock_quantity" placeholder="@lang('Enter your quantity')">
                         </div>
                     </div>
                 </div>

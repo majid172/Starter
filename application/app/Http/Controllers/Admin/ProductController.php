@@ -17,5 +17,23 @@ class ProductController extends Controller
         return view('admin.product.list',compact('pageTitle','products','categories'));
     }
 
-    public function 
+    public function productStore(Request $request)
+    {
+        $request->validate([
+            'pr_name' =>'required|string',
+            'price' => 'required|numeric',
+            'catedory_id' => 'required',
+            'stock_quantity' =>'required|numeric'
+        ]);
+
+        $product = new Product();
+        $product->category_id=$request->category_id;
+        $product->name = $request->pr_name;
+        $product->price = $request->price;
+        $product->stock_quantity = $request->stock_quantity;
+        $product->description = $request->description;
+        $product->save();
+        $notify = ['success','Product store successfully'];
+        return back()->withNotify($notify);
+    }
 }
