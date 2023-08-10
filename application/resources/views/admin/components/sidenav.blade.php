@@ -14,6 +14,11 @@
         <span class="menu-title">  @lang('List')</span>
       </a></li>
 
+      <li class="nav-item nav-category">@lang('Product')</li>
+      <li class="nav-item"> <a class="nav-link" href="{{route('admin.product.list')}}"> <i class="menu-icon mdi mdi-account-circle-outline"></i>
+        <span class="menu-title">  @lang('Product list')</span>
+      </a></li>
+
       <li class="nav-item nav-category">@lang('Users Management')</li>
       <li class="nav-item">
         <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">

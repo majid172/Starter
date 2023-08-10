@@ -75,6 +75,7 @@
                                 <li><a href="{{route('pages',$page->slug)}}">{{__($page->name)}}</a></li>
                             @endforeach
                             {{-- <li><a href="javascript:void()">@lang('Shop')</a></li> --}}
+                            @auth
                             <li><a href="#">Pages</a>
                                 <ul class="header__menu__dropdown">
                                     <li><a href="./shop-details.html">Shop Details</a></li>
@@ -83,6 +84,8 @@
                                     <li><a href="./blog-details.html">Blog Details</a></li>
                                 </ul>
                             </li>
+                            @endauth
+                            
                        
                         </ul>
                     </nav>

@@ -1,60 +1,71 @@
 @extends($activeTemplate.'layouts.frontend')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8 col-lg-7 col-xl-5">
-            <div class="text-end">
-                <a href="{{ route('home') }}" class="fw-bold home-link"> <i class="las la-long-arrow-alt-left"></i>
-                    @lang('Go to Home')</a>
-            </div>
-            <div class="card custom--card">
-                <div class="card-header">
-                    <h5 class="card-title">@lang('Login')</h5>
-                </div>
-
-                <div class="card-body">
-                    <form method="POST" action="{{ route('user.login') }}" class="verify-gcaptcha">
-                        @csrf
-
-                        <div class="form-group">
-                            <label for="email" class="form-label">@lang('Username or Email')</label>
-                            <input type="text" name="username" value="{{ old('username') }}"
-                                class="form-control form--control" required>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="d-flex flex-wrap justify-content-between mb-2">
-                                <label for="password" class="form-label mb-0">@lang('Password')</label>
-                                <a class="fw-bold forgot-pass"
-                                    href="{{ route('user.password.request') }}">
-                                    @lang('Forgot your password?')
-                                </a>
-                            </div>
-                            <input id="password" type="password" class="form-control form--control" name="password"
-                                required>
-                        </div>
-
-                        <x-captcha></x-captcha>
-                        <div class="form-group form-check">
-                            <input class="form-check-input" type="checkbox" name="remember" id="remember"
-                                {{ old('remember') ? 'checked' : '' }}>
-                            <label class="form-check-label" for="remember">
-                                @lang('Remember Me')
-                            </label>
-                        </div>
-
-                        <div class="form-group">
-                            <button type="submit" id="recaptcha" class="btn btn--base w-100">
-                                @lang('Login')
-                            </button>
-                        </div>
-                        <p class="mb-0">@lang('Don\'t have any account?') <a
-                                href="{{ route('user.register') }}">@lang('Register')</a></p>
-                    </form>
-                </div>
-            </div>
+<div class="login-container">
+    <h1>Fish Market Login</h1>
+    <form class="login-form" action="login.php" method="post">
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" required>
         </div>
-    </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+        <button class="login-button" type="submit">Login</button>
+    </form>
 </div>
 @endsection
+
+@push('style')
+
+    <style>
+       
+
+        .login-container {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+            width: 300px;
+        }
+
+        .login-container h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .login-form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            font-weight: bold;
+        }
+
+        .form-group input {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .login-button {
+            background-color: #007bff;
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        .login-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+    
+@endpush

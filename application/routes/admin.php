@@ -48,7 +48,15 @@ Route::middleware('admin')->group(function () {
         Route::get('category','list')->name('category');
         Route::post('category','store')->name('category.store');
         Route::post('/action/{id}','action')->name('category.action');
-    }); 
+    });
+
+    // product 
+    Route::controller('ProductController')->prefix('/product')->group(function(){
+        Route::get('product-list','list')->name('product.list');
+        Route::post('product-list','productStore')->name('product.store');
+    });
+    
+    
 
     // Users Manager
     Route::controller('ManageUsersController')->name('users.')->prefix('manage/users')->group(function(){
