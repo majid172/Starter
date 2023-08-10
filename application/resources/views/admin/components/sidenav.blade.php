@@ -10,12 +10,12 @@
 
       {{-- categories --}}
       <li class="nav-item nav-category">@lang('Category')</li>
-      <li class="nav-item"> <a class="nav-link" href="{{route('admin.category')}}"> <i class="menu-icon mdi mdi-account-circle-outline"></i>
+      <li class="nav-item"> <a class="nav-link" href="{{route('admin.category')}}"> <i class="menu-icon mdi mdi-folder-outline"></i>
         <span class="menu-title">  @lang('List')</span>
       </a></li>
 
       <li class="nav-item nav-category">@lang('Product')</li>
-      <li class="nav-item"> <a class="nav-link" href="{{route('admin.product.list')}}"> <i class="menu-icon mdi mdi-account-circle-outline"></i>
+      <li class="nav-item"> <a class="nav-link" href="{{route('admin.product.list')}}"> <i class="menu-icon mdi mdi-fish"></i>
         <span class="menu-title">  @lang('Product list')</span>
       </a></li>
 
@@ -60,7 +60,7 @@
       <li class="nav-item nav-category">@lang('Withdraw Management')</li>
       <li class="nav-item">
         <a class="nav-link" data-bs-toggle="collapse" href="#withdraw" aria-expanded="false" aria-controls="withdraw">
-          <i class="menu-icon mdi mdi-cash"></i>
+          <i class="menu-icon mdi mdi-bank-transfer-out"></i>
           <span class="menu-title">@lang('Withdraw Details')</span>
           <i class="menu-arrow"></i> 
         </a>
@@ -139,21 +139,24 @@
 
       <li class="nav-item">
         <a class="nav-link" href="{{route('admin.language.manage')}}">
-          <i class="menu-icon mdi mdi-file-document"></i>
+          <i class="menu-icon mdi mdi-translate"></i>
+
           <span class="menu-title">@lang('Language')</span>
         </a>
       </li>
 
       <li class="nav-item {{menuActive(['admin.report.login.history','admin.report.login.ipHistory'])}}">
         <a href="{{route('admin.report.login.history')}}" class="nav-link">
-            <i class="menu-icon las la-sign-in-alt"></i>
+          <i class="menu-icon mdi mdi-login"></i>
+
             <span class="menu-title">@lang('Login Activities')</span>
         </a>
       </li>
 
       <li class="nav-item {{menuActive('admin.report.notification.history')}}">
         <a href="{{route('admin.report.notification.history')}}" class="nav-link">
-            <i class="menu-icon las la-bell"></i>
+          <i class="menu-icon mdi mdi-bell-outline"></i>
+
             <span class="menu-title">@lang('Notifications')</span>
         </a>
     </li>
